@@ -1,0 +1,75 @@
+*,
+* ::before,
+* ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+  position: relative;
+  background-image: url('assets/web_background.png');
+  background-size: cover;
+  height: 120vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__logo{
+  width: 7vw;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+
+.navbar__buttons{
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 15vw;
+  font-weight: bolder;
+  margin-right: 18vw;
+}
+
+.navbar__buttons a {
+  text-decoration: none;
+  font-size: 120%;
+  font-family: 'Trebuchet MS', sans-serif;
+  color: #01270f;
+  margin: 0 1vw;
+}
+
+.search{
+  width: max-content;
+  display: flex;
+  align-items: center;
+  padding: 5%;
+  border-radius: 15px;
+  background: #f6f6f6;
+  margin-left: 8%;
+}
+
+.search__input{
+  font-size: 80%;
+  font-family: 'Trebuchet MS', sans-serif;
+  color: #333333;
+  margin-left: 5%;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+@media(max-width: 768px){
+  .navbar__logo{
+    width: 15vw;
+  }
+}
