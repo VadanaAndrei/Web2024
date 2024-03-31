@@ -70,8 +70,8 @@
 
 main {
   display: flex;
-  flex-direction: column; /* Copiii lui main vor fi orientați vertical */
-  align-items: center; /* Centering the content */
+  flex-direction: column; 
+  align-items: center; 
   width: 100%;
   background-color: #fefef3;
 }
@@ -79,7 +79,7 @@ main {
 .top-section {
   display: flex;  
   justify-content: space-between;
-  width: 100%; /* sau lățimea dorită pentru a menține .report și .stats alăturate */
+  width: 100%; 
   background-color: #fefef3;
 }
 
@@ -212,9 +212,9 @@ main {
 }
 
 .rss_feed {
-  width: 40vw; /* ajustează lățimea după cum este necesar */
-  height: 40vh; /* înălțimea fixă pentru scroll */
-  overflow-y: scroll; /* bara de scroll va apare doar când este necesar */
+  width: 40vw; 
+  height: 40vh; 
+  overflow-y: scroll;
   font-family:'Verdana', sans-serif;
   border: 1px solid #888;
   border-radius: 8px;
@@ -227,9 +227,9 @@ main {
 }
 
 .tips-and-tricks{
-  width: 40vw; /* ajustează lățimea după cum este necesar */
-  height: 40vh; /* înălțimea fixă pentru scroll */
-  overflow-y: scroll; /* bara de scroll va apare doar când este necesar */
+  width: 40vw; 
+  height: 40vh; 
+  overflow-y: scroll; 
   font-family:'Verdana', sans-serif;
   border: 1px solid #888;
   border-radius: 8px;
