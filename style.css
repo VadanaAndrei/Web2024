@@ -1,9 +1,15 @@
+@import url("footer.css");
+
 *,
 * ::before,
 * ::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html{
+  scroll-behavior: smooth;
 }
 
 .background {
@@ -25,10 +31,13 @@
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
-  margin-left: 2%;
-  margin-top: 1%;
 }
 
+.logo-link{
+  margin-left: 2%;
+  margin-top: 1%;
+
+}
 
 .navbar__buttons{
   list-style: none;
@@ -40,7 +49,7 @@
   margin-right: 18vw;
 }
 
-.navbar__buttons a {
+.navbar__home, .navbar__about, .navbar__contact {
   text-decoration: none;
   font-size: 120%;
   font-family: 'Trebuchet MS', sans-serif;
@@ -109,7 +118,11 @@ main {
   height:auto;
 }
 
-.report__button{
+a.report__button {
+  text-decoration: none;
+}
+
+.report__button button {
   width:10vw;
   height: auto;
   font-size: 1.5em;
@@ -122,15 +135,15 @@ main {
   padding: 2%;
   display: block; 
   margin-left: auto;
-  margin-right: auto; 
+  margin-right: auto;
 }
 
-.report__button:hover{
+
+.report__button:hover button{
   background: #15202C;
   color: white;
   transition: 0.5s;
   cursor: pointer;
-  border: none;
 }
 
 .stats{
@@ -150,7 +163,11 @@ main {
   height:auto;
 }
 
-.stats__button{
+a.stats__button{
+  text-decoration: none;
+}
+
+.stats__button button{
   width:10vw;
   height: auto;
   font-size: 1.5em;
@@ -166,12 +183,11 @@ main {
   margin-right: auto; 
 }
 
-.stats__button:hover{
+.stats__button:hover button{
   background: #15202C;
   color: white;
   transition: 0.5s;
   cursor: pointer;
-  border: none;
 }
 
 .pop-up {
@@ -209,6 +225,7 @@ main {
   justify-content: space-between;
   width: 100%;
   background-color: #fefef3;
+  padding-bottom: 12vh;
 }
 
 .rss_feed {
@@ -260,12 +277,4 @@ main {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
-}
-
-
-
-@media(max-width: 768px){
-  .navbar__logo{
-    width: 15vw;
-  }
 }
