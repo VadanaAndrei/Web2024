@@ -224,6 +224,8 @@ main {
   box-shadow: 0 3px 5px 0 rgba(0,0,0,0.5);
   padding : 2%;
   margin: 2% 0% 2% 5%;
+  max-height: 60vh; 
+  overflow-y: auto;
 }
 
 .tips-and-tricks{
@@ -239,8 +241,29 @@ main {
   box-shadow: 0 3px 5px 0 rgba(0,0,0,0.5);
   padding : 2%;
   margin: 2% 5% 2% 0%;
-
+  max-height: 60vh; 
+  overflow-y: auto;
 }
+
+::-webkit-scrollbar {
+  width: 0.5vw; 
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 4px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+
 @media(max-width: 768px){
   .navbar__logo{
     width: 15vw;
