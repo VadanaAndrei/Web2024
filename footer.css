@@ -1,0 +1,50 @@
+.footer {
+    background-color: #466E61;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .footer .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+  }
+  
+  .footer h3 {
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+  }
+  
+  .footer p {
+    font-size: 0.7em;
+    font-family: Verdana, sans-serif;
+  }
+  
+  .footer a {
+    text-decoration: none;
+    font-size: 0.9em;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer__about, .footer__navigation, .footer__contact, .footer__social-media {
+    margin: 10px;
+  }
+  
+  .footer__bottom {
+    border-top: 1px solid #dee2e6;
+    padding-top: 10px;
+    margin-top: 20px;
+    font-size: 0.8em;
+  }
+  
+  .social-icons a {
+    display: inline-block;
+    padding-top: 2vh;
+    margin-right: 0.2vw;
+    font-size: 1.2em;
+    color: white;
+  }
