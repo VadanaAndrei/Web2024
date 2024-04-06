@@ -1,0 +1,58 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fefef3;
+  }
+  
+  .navbar__logo{
+    width: 7vw;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+  }
+  
+  .logo-link{
+    margin-left: 2%;
+    margin-top: 1%;
+  
+  }
+  
+  .navbar__buttons{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 15vw;
+    font-weight: bolder;
+    margin-right: 18vw;
+  }
+  
+  .navbar__home, .navbar__about, .navbar__contact {
+    text-decoration: none;
+    font-size: 120%;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: #01270f;
+    margin: 0 1vw;
+  }
+  
+  .search{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: 5%;
+    border-radius: 15px;
+    background: #f6f6f6;
+    margin-left: 8%;
+  }
+  
+  .search__input{
+    font-size: 80%;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: #333333;
+    margin-left: 5%;
+    outline: none;
+    border: none;
+    background: transparent;
+  }

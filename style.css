@@ -107,7 +107,7 @@ main {
   height: 60vh;
   border: 1px solid #888;
   border-radius: 8px;
-  box-shadow: 0 3px 5px 0 rgba(0,0,0,0.5);
+  box-shadow: -4px 4px 12px 0px rgba(107,107,107,0.51);  
   padding : 2%;
   margin-left : 17%;
   margin-bottom: 2%;
@@ -152,7 +152,7 @@ a.report__button {
   height: 60vh;
   border: 1px solid #888;
   border-radius: 8px;
-  box-shadow: 0 3px 5px 0 rgba(0,0,0,0.5);
+  box-shadow: -4px 4px 12px 0px rgba(107,107,107,0.51);
   padding : 2%;
   margin-right : 17%;
   margin-bottom: 2%;

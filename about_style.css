@@ -1,0 +1,61 @@
+@import url("navbar.css");
+@import url("footer.css");
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; 
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.container_about {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    width: 100%;
+    background-color: #fefef3;
+    padding: 20px; 
+}
+
+.text-box {
+    width: 40vw; 
+    margin-top: 50px;
+    margin-left: 50px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.5);
+    background-color: #466E61;
+    padding: 20px;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 1em;
+    color: white;
+}
+
+.image-box {
+    width: 40vw; 
+    align-self: stretch; 
+}
+
+.image {
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 8px; 
+}
+
+html{
+    scroll-behavior:smooth;
+  }
