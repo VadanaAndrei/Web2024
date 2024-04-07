@@ -1,0 +1,69 @@
+@import url("navbar.css");
+@import url("footer.css");
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+
+.container-login {
+    display: flex;
+    justify-content: center;
+    background-color: #fefef3;
+    align-items: center;
+    gap: 200px;
+    padding: 40px 20px;
+}
+
+.container-login h2 {
+    text-align: center;
+}
+
+form {
+    font-family: 'Trebuchet MS', sans-serif;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-left: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-basis: 560px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #466e61;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #2b4d42;
+}
