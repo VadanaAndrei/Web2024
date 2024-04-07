@@ -4,75 +4,73 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%; 
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 .container_about {
-    display: flex;
-    justify-content: space-between; 
-    align-items: flex-start; 
-    width: 100%;
-    background-color: #fefef3;
-    padding: 20px; 
+  display: flex;
+  justify-content: center;
+  background-color: #fefef3;
+  align-items: center;
+  gap: 200px;
+  padding: 40px 50px;
 }
 
 .text-box {
-    width: 40vw; 
-    margin-top: 50px;
-    margin-left: 50px;
-    border: 1px solid #888;
-    border-radius: 8px;
-    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.5);
-    background-color: #466E61;
-    padding: 20px;
-    font-family: 'Trebuchet MS', sans-serif;
-    font-size: 1em;
-    color: white;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid #888;
+  border-radius: 8px;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.5);
+  background-color: #466E61;
+  padding: 20px;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 1em;
+  color: white;
 }
 
 .image-box {
-    width: 40vw; 
-    align-self: stretch; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40vw;
+  align-self: stretch;
 }
 
 .image {
-    max-width: 100%; 
-    height: auto; 
-    border-radius: 8px; 
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
-html{
-    scroll-behavior:smooth;
-  }
+html {
+  scroll-behavior: smooth;
+}
 
-  ::-webkit-scrollbar {
-    width: 0.5vw; 
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #888; 
-    border-radius: 4px; 
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
+::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
