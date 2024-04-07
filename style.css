@@ -157,6 +157,7 @@ a.report__button {
   color: white;
   transition: 0.5s;
   cursor: pointer;
+  border: none;
 }
 
 .stats{
@@ -201,6 +202,7 @@ a.stats__button{
   color: white;
   transition: 0.5s;
   cursor: pointer;
+  border: none;
 }
 
 .pop-up {
@@ -273,6 +275,10 @@ a.stats__button{
   margin: 2% 5% 2% 0%;
   max-height: 60vh; 
   overflow-y: auto;
+}
+
+.material-symbols-outlined {
+  color: #01270F; 
 }
 
 ::-webkit-scrollbar {

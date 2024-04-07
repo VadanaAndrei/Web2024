@@ -44,17 +44,41 @@
     </header>
 
     <main>
-        <div class="container-login">
-            <form action="/submit" method="post">
-                <h2>Login</h2><br><br>
-                <div class="form-group">
-                    <label for="e-mail">E-mail:</label>
-                    <input type="text" id="e-mail" name="e-mail" required placeholder="E-mail...">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="text" id="password" name="password" required placeholder="Your password...">
-                </div>
+        <div class="container-login-register">
+            <div class="container-login">
+                <form action="/submit" method="post">
+                    <h2>Login</h2><br><br>
+                    <div class="form-group">
+                        <label for="e-mail">E-mail:</label>
+                        <input type="email" id="e-mail" name="e-mail" required placeholder="E-mail...">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required placeholder="Your password...">
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+            <div class="container-register">
+                <form action="/submit" method="post">
+                    <h2>Register</h2><br><br>
+                    <div class="form-group">
+                        <label for="e-mail">E-mail:</label>
+                        <input type="email" id="e-mail" name="e-mail" required placeholder="Enter your e-mail...">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required
+                            placeholder="Create a password...">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Confirm Password:</label>
+                        <input type="password" id="password" name="password" required
+                            placeholder="Confirm your password...">
+                    </div>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
         </div>
     </main>
 
