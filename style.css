@@ -58,13 +58,11 @@ html{
 }
 
 .search{
-  width: max-content;
   display: flex;
   align-items: center;
   padding: 5%;
   border-radius: 15px;
   background: #f6f6f6;
-  margin-left: 8%;
 }
 
 .search__input{
@@ -75,6 +73,21 @@ html{
   outline: none;
   border: none;
   background: transparent;
+}
+
+
+.profile {
+  padding: 10px;
+  margin-left: 1vw;
+  cursor: pointer;
+}
+
+.profile:active,
+.profile:focus {
+  background-color: transparent;
+  color: inherit; 
+  border: none; 
+  outline: none; 
 }
 
 main {
