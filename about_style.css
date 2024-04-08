@@ -74,3 +74,14 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+@media screen and (max-width: 425px) {
+  .container_about {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .text-box, .image-box {
+    width: 100%;
+  }
+}

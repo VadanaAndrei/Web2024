@@ -73,3 +73,49 @@
 .material-symbols-outlined {
   color: #01270F; 
 }
+
+
+@media screen and (max-width: 425px) {
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .navbar__logo {
+        width: 25vw; 
+        margin: 0 auto;
+    }
+
+    .logo-link {
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar__buttons {
+        flex-direction: column;
+        width: 100%; 
+        margin: 0;
+        padding: 20px 0;
+        gap: 5px;
+    }
+
+    .navbar__home, .navbar__about, .navbar__contact, .profile {
+        font-size: 100%; 
+        margin: 10px 0; 
+        padding: 5px 0; 
+    }
+
+    .search {
+        margin: 10px 0;
+        width: 100%;
+        justify-content: center; 
+    }
+
+    .search__input {
+        width: 70%;
+    }
+
+    .profile {
+        margin: 0 auto; 
+    }
+}
