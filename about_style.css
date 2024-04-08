@@ -75,10 +75,11 @@ html {
   background: #555;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 435px) {
   .container_about {
     flex-direction: column;
     gap: 20px;
+    padding: 10px 15px 40px 15px;
   }
 
   .text-box, .image-box {

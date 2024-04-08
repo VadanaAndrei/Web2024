@@ -48,3 +48,30 @@
     font-size: 1.2em;
     color: white;
   }
+
+  @media screen and (max-width: 435px) {
+    .footer .container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer__about, .footer__navigation, .footer__contact, .footer__social-media {
+      margin: 10px 70px;
+      text-align: center;
+    }
+
+    .footer h3, .footer p {
+      font-size: 0.7em;
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+  }
+  
+    .social-icons a {
+      margin-right: 10px;
+      font-size: 0.8em;
+  
+    }
+  }

@@ -105,3 +105,15 @@ button:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+@media screen and (max-width: 435px) {
+    .container_stats {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 15px 40px 15px;
+      }
+
+      .text-box, #statistics {
+        width: 100%;
+      }
+}
