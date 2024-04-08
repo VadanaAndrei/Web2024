@@ -111,7 +111,7 @@ button:hover {
     .container-login-register {
       flex-direction: column;
       gap: 20px;
-      padding: 10px;
+      padding: 10px 15px 40px 15px;
     }
   
     form {
