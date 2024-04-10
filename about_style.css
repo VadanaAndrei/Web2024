@@ -86,3 +86,38 @@ html {
     width: 100%;
   }
 }
+
+@media screen and (min-width: 435px) and (max-width: 1024px) {
+
+  .container_about {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px; 
+  }
+
+  .text-box, .image-box {
+    width: auto; 
+    max-width: 100%; 
+    margin: 0 auto; 
+    padding: 10px; 
+  }
+
+  .text-box {
+    max-width: 500px;
+    font-size: calc(12px + 0.5vw);
+  }
+
+  .image-box {
+    max-width: 500px;
+  }
+
+  .image {
+    border-radius: 4px;
+  }
+  
+  .navbar__buttons {
+    gap: 10px; 
+  }
+
+}
+

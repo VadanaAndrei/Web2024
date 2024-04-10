@@ -5,7 +5,7 @@
   background-color: #fefef3;
 }
 
-.navbar__logo{
+.navbar__logo {
   width: 7vw;
   height: auto;
   background-repeat: no-repeat;
@@ -13,30 +13,32 @@
   cursor: pointer;
 }
 
-.logo-link{
+.logo-link {
   margin-left: 2%;
   margin-top: 1%;
 
 }
 
-.navbar__buttons{
+.navbar__buttons {
   list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bolder;
-  gap:20px;
+  gap: 20px;
   margin-right: 16px;
 }
 
-.navbar__home, .navbar__about, .navbar__contact {
+.navbar__home,
+.navbar__about,
+.navbar__contact {
   text-decoration: none;
   font-size: 120%;
   font-family: 'Trebuchet MS', sans-serif;
   color: #01270f;
 }
 
-.search{
+.search {
   display: flex;
   align-items: center;
   padding: 5%;
@@ -44,7 +46,7 @@
   background: #f6f6f6;
 }
 
-.search__input{
+.search__input {
   font-size: 80%;
   font-family: 'Trebuchet MS', sans-serif;
   color: #333333;
@@ -62,59 +64,162 @@
 
 .profile:active,
 .profile:focus {
-  background-color: transparent; 
-  color: inherit; 
-  border: none; 
+  background-color: transparent;
+  color: inherit;
+  border: none;
   outline: none;
 }
 
 .material-symbols-outlined {
-  color: #01270F; 
+  color: #01270F;
 }
 
 
 @media screen and (max-width: 435px) {
-    .navbar {
-        flex-direction: column;
-        padding: 10px;
-    }
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
 
-    .navbar__logo {
-        width: 25vw; 
-        margin: 0 auto;
-        transform: translate(6px, 0px);
-    }
+  .navbar__logo {
+    width: 25vw;
+    margin: 0 auto;
+    transform: translate(6px, 0px);
+  }
 
-    .logo-link {
-        margin: 0;
-        padding: 0;
-    }
+  .logo-link {
+    margin: 0;
+    padding: 0;
+  }
 
-    .navbar__buttons {
-        flex-direction: column;
-        width: 100%; 
-        margin: 0;
-        padding: 20px 0;
-        gap: 5px;
-    }
+  .navbar__buttons {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 20px 0;
+    gap: 5px;
+  }
 
-    .navbar__home, .navbar__about, .navbar__contact, .profile {
-        font-size: 100%; 
-        margin: 10px 0; 
-        padding: 5px 0; 
-    }
+  .navbar__home,
+  .navbar__about,
+  .navbar__contact,
+  .profile {
+    font-size: 100%;
+    margin: 10px 0;
+    padding: 5px 0;
+  }
 
-    .search {
-        margin: 10px 0;
-        width: 100%;
-        justify-content: center; 
-    }
+  .search {
+    margin: 10px 0;
+    width: 100%;
+    justify-content: center;
+  }
 
-    .search__input {
-        width: 70%;
-    }
+  .search__input {
+    width: 70%;
+  }
 
-    .profile {
-        margin: 0 auto; 
-    }
+  .profile {
+    margin: 0 auto;
+  }
 }
+
+@media screen and (min-width: 435px) and (max-width: 575px) {
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 10px;
+  }
+
+  .navbar__logo {
+    width: 100px;
+    margin-bottom: 10px;
+  }
+
+
+  .logo-link {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .navbar__buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  .navbar__home,
+  .navbar__about,
+  .navbar__contact,
+  .profile {
+    font-size: 0.9em;
+    padding: 5px;
+  }
+
+  .search {
+    order: 3;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 10px;
+  }
+
+  .search__input {
+    width: 100%;
+    font-size: 0.9em;
+  }
+
+  .profile {
+    order: 2;
+  }
+}
+
+@media screen and (min-width: 575px) and (max-width: 1024px) {
+
+  .navbar {
+    flex-wrap: wrap;
+    padding: 5px 10px;
+    justify-content: space-between;
+  }
+
+  .navbar__logo {
+    width: auto;
+    max-width: 100px;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar__buttons {
+    gap: 5px;
+    margin-right: 10px;
+    padding-top: 0;
+  }
+
+  .navbar__home,
+  .navbar__about,
+  .navbar__contact,
+  .profile {
+    font-size: 0.9em;
+    padding: 5px;
+  }
+
+  .search {
+    padding: 2px;
+    margin-top: 5px;
+  }
+
+  .search__input {
+    font-size: 0.9em;
+  }
+
+  .profile {
+    margin-top: 5px;
+  }
+}
+
