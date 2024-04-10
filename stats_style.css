@@ -10,7 +10,7 @@
 }
 
 .text-box {
-    width: 40vw; 
+    width: 40vw;
     border: 1px solid #888;
     border-radius: 8px;
     box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.5);
@@ -36,12 +36,12 @@
     display: flex;
     flex-direction: column;
     font-family: 'Trebuchet MS', sans-serif;
-    align-items: center; 
+    align-items: center;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
-    width: 50vw; 
-    max-width: 800px; 
+    width: 50vw;
+    max-width: 800px;
 }
 
 #filter-form {
@@ -53,25 +53,25 @@
 
 .form-group {
     display: flex;
-    justify-content: flex-start; 
-    align-items: center; 
-    margin-bottom: 20px; 
-    width: 100%; 
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 .form-group label {
-    white-space: nowrap; 
-    margin-right: 20px; 
+    white-space: nowrap;
+    margin-right: 20px;
 }
 
 input[type="date"],
 select {
     padding: 12px;
-    align-items:start; 
+    align-items: start;
     border-radius: 4px;
     border: 1px solid #ccc;
     width: 100%;
-    margin-right: auto; 
+    margin-right: auto;
 }
 
 
@@ -111,9 +111,42 @@ button:hover {
         flex-direction: column;
         gap: 20px;
         padding: 10px 15px 40px 15px;
-      }
+    }
 
-      .text-box, #statistics {
+    .text-box,
+    #statistics {
         width: 100%;
-      }
+    }
+}
+
+@media screen and (min-width: 435px) and (max-width: 1024px) {
+
+    .container_stats {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .text-box,
+    #statistics {
+        width: auto;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    .text-box {
+        width: 500px;
+        font-size: calc(12px + 0.5vw);
+    }
+
+    #statistics {
+        width: 500px;
+        border-radius: 4px;
+    }
+
+    .navbar__buttons {
+        gap: 10px;
+    }
+
 }
