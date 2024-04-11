@@ -9,6 +9,10 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+  }
+
 .text-box {
     width: 40vw;
     border: 1px solid #888;
@@ -20,7 +24,6 @@
     font-size: 1em;
     color: white;
 }
-
 
 .container_stats {
     display: flex;
@@ -74,7 +77,6 @@ select {
     margin-right: auto;
 }
 
-
 button {
     padding: 10px 15px;
     margin-top: 10px;
@@ -120,7 +122,6 @@ button:hover {
 }
 
 @media screen and (min-width: 435px) and (max-width: 1024px) {
-
     .container_stats {
         flex-direction: column;
         gap: 20px;
@@ -147,6 +148,5 @@ button:hover {
 
     .navbar__buttons {
         gap: 10px;
-    }
-
+    }    
 }
