@@ -67,8 +67,8 @@ html {
   height: auto;
 }
 
-a.report__button,
-a.stats__button {
+.report__button,
+.stats__button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -76,8 +76,8 @@ a.stats__button {
 }
 
 
-.report__button button,
-.stats__button button {
+.report__button ,
+.stats__button  {
   font-size: 1.5em;
   font-family: 'Trebuchet MS', sans-serif;
   color: #333333;
@@ -89,8 +89,8 @@ a.stats__button {
   width: auto;
 }
 
-.report__button:hover button,
-.stats__button:hover button {
+.report__button:hover ,
+.stats__button:hover {
   background: #15202C;
   color: white;
   transition: 0.5s;
@@ -221,8 +221,8 @@ a.stats__button {
     height: auto;
   }
 
-  .report__button button,
-  .stats__button button {
+  .report__button,
+  .stats__button {
     width: auto;
     padding: 10px;
   }
@@ -243,7 +243,7 @@ a.stats__button {
 @media screen and (min-width: 435px) and (max-width: 750px) {
 
   .background {
-    background-image: url('assets/web_background_resized.png');
+    background-image: url('../assets/web_background_resized.png');
     background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
@@ -264,9 +264,12 @@ a.stats__button {
 
 @media screen and (min-width: 750px) and (max-width: 1024px) {
   .background {
-    background-size: cover;
+    background-image: url('../assets/web_background_resized.png');
+    background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: #fefef3;
+    height: 55vh;
   }
 
   .report,
@@ -278,4 +281,5 @@ a.stats__button {
     padding: 4%;
     margin: 2% auto;
   }
+
 }
