@@ -260,6 +260,11 @@ html {
     margin: 2% auto;
     font-size: 2.5vw; 
   }
+
+  .report .pop-up,
+  .stats .pop-up {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 750px) and (max-width: 1024px) {
@@ -280,6 +285,11 @@ html {
     height: auto;
     padding: 4%;
     margin: 2% auto;
+  }
+
+  .report .pop-up,
+  .stats .pop-up {
+    display: none;
   }
 
 }
