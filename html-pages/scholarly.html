@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="banner">
-            <img src="../assets/scholarly-html.svg" width="227" height="50" alt="Scholarly HTML logo">
+            <img src="../assets/scholarly.png" width="227" height="50" alt="Scholarly HTML logo">
         </div>
         <h1>FePA Report - Scholarly HTML</h1>
     </header>
@@ -68,7 +68,8 @@
 
         <section id="functions">
             <h3>Functions</h3>
-            Below are the functionalities that the FePA application offers:
+           
+                Below are the functionalities that the FePA application offers:
             <ul>
                 <li>Creation of an account and user registration</li>
                 <li>Changing the user's password</li>
@@ -77,6 +78,7 @@
                     HTML format</li>
                 <li>Viewing the most recent reports uploaded by other users</li>
             </ul>
+        
         </section>
         <section id="operating-environment">
             <h3>Operating Environment</h3>
@@ -93,7 +95,7 @@
             <h3>User Interface</h3>
             <p>
                 The application offers a modern interface that is visually pleasing to enhance the user experience.
-                ReDat can be used on both large screens and on the browser of a phone with a smaller screen size,
+                FePA can be used on both large screens and on the browser of a phone with a smaller screen size,
                 continuing to offer a pleasant experience to the user thanks to its responsive design.
             </p>
         </section>
@@ -124,6 +126,93 @@
                 the database.
             </p>
         </section>
+    </section>
+
+    <section id="system-features">
+        <h2>Features</h2>
+        <section id="login">
+            <h3>Authentication</h3>
+            <p>
+                User authentication involves filling in the necessary fields (email and password) from the
+                login/register page. After filling in, he will press the login button and if the information filled in
+                is correct and the corresponding account exists, the user will be authenticated in the account.If the
+                user does not remember the password, he will be able to click on the 'Forgot password' button and he
+                will be redirected to a new page where he will have to enter his email in order to receive a password
+                reset link.
+            </p>
+        </section>
+        <section id="register">
+            <h3>Registration</h3>
+            <p>
+                Registration requires the creation of a new user account. The user enters the information in the
+                required fields (email, username, password, password confirmation) on the login/register page and if the
+                information he entered is valid, then the account is created by pressing the 'Register' button.
+            </p>
+        </section>
+
+        <section id="report-animal">
+            <h3>Reporting an animal</h3>
+            <p>
+                If a user wants to report an animal, he will enter from the Home page, using the Report button, on the
+                reporting page and fill out the displayed form. It will start with the species, description, tags and
+                continue with the description of the area where the animal is active. In addition, it will be able to
+                include pictures. Each report will be included in the news feed from the Home page and can be filtered
+                from the Statistics page.
+            </p>
+        </section>
+
+        <section id="statistics">
+            <h3>Generating statistics</h3>
+            <p>
+                The user can filter the reports from the Statistics page, where he will have to select what he wants to
+                see according to the application filters (city, day, animal). The statistics will be generated in HTML
+                and PDF format so that the user's visualization is as easy as possible.
+            </p>
+        </section>
+
+        <section id="user-profile">
+            <h3>User profile</h3>
+            <p>
+                The user, through the Profile page, will be able to access the information associated with the account
+                and change his password, completing a form with the fields: old password, new password and password
+                confirmation.
+            </p>
+
+        </section>
+
+        <section id="user-interface" role="doc-introduction">
+            <h2>Interface</h2>
+            <p>
+                The application interface is minimalist, user friendly, thus making the user's visit a pleasant one. The
+                color palette was chosen to evoke nature/animals. Also, the interface has a modern structure, such as
+                the pops of the buttons on the Home page, the shadows of the text/image boxes, the pictures according to
+                the described pages
+            </p>
+            <p>
+                Each page has its own css style sheet, but for the navigation bar and for the footer we modularized the
+                content, to be able to import it into the rest of the pages without duplicating the code.
+            </p>
+
+            <p>
+                The application is responsive, so it can be used on both mobile phones and tablets. For this, in each
+                css style sheet, special resolution cases are treated, in which each component is scaled in such a way
+                that the page structure remains organized, clean and can be used by the user
+            </p>
+        </section>
+
+    </section>
+
+
+
+    <section id="other-resources">
+        <h2>Main Resources</h2>
+        <ul>
+            <li>https://learn.shayhowe.com/html-css/building-forms/</li>
+            <li>https://www.w3schools.com/html/html_responsive.asp</li>
+            <li>https://www.geeksforgeeks.org/making-a-div-vertically-scrollable-using-css/</li>
+            <li>https://www.freecodecamp.org/news/html-button-link-code-examples-how-to-make-html-hyperlinks-using-the-href-attribute-on-tags/</li>
+            <li>https://www.simplilearn.com/tutorials/css-tutorial/css-responsive-design</li>
+        </ul>
     </section>
 
 </body>
