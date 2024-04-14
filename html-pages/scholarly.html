@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>FePA Scholarly HTML Report</title>
+
+    <link rel="stylesheet" href="https://w3c.github.io/scholarly-html/css/scholarly.min.css">
+    <script src="https://w3c.github.io/scholarly-html/js/scholarly.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="banner">
+            <img src="../assets/scholarly-html.svg" width="227" height="50" alt="Scholarly HTML logo">
+        </div>
+        <h1>FePA Report - Scholarly HTML</h1>
+    </header>
+
+    <div role="contentinfo">
+        <dl>
+            <dt>Authors</dt>
+            <dd>
+                <a href="https://github.com/AstancaiTudor" target="_blank">Astancai Tudor</a>,
+                <a href="https://github.com/VadanaAndrei" target="_blank">Vadana Andrei</a>
+            </dd>
+        </dl>
+    </div>
+    <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+        <h2>Abstract</h2>
+        <p>
+            This document contains the complete front-end for the FePA project for Web Technologies, created in
+            collaboration with
+            <a href="https://github.com/AstancaiTudor" target="blank">Astancai Tudor</a> and
+            <a href="https://github.com/VadanaAndrei" target="blank">Vadana Andrei</a> (2024).
+            <br>
+            <br>
+            <i>University Alexandru Ioan Cuza, Faculty of Computer Science Iasi</i>
+        </p>
+    </section>
+    <section id="introduction" role="doc-introduction">
+        <h2>Introduction</h2>
+        <section id="purpose">
+            <h3>Purpose</h3>
+            <p>
+                The FePA Web Application creates a space where users can report stray animals or those that have escaped
+                from shelters, and they can also view reports made by other people.
+            </p>
+        </section>
+
+        <section id="intended-audience">
+            <h3>Intended Audience</h3>
+            <p>
+                The application is aimed at the average user who wants to help their society and community.
+            </p>
+        </section>
+        <section id="scope">
+            <h3>Scope</h3>
+            <p>
+                The application aims to create a safer community for both people and animals.
+            </p>
+        </section>
+    </section>
+
+    <section id="description" role="doc-introduction">
+        <h2>Description</h2>
+
+        <section id="functions">
+            <h3>Functions</h3>
+            Below are the functionalities that the FePA application offers:
+            <ul>
+                <li>Creation of an account and user registration</li>
+                <li>Changing the user's password</li>
+                <li>Reporting a stray animal or one that has escaped from a shelter</li>
+                <li>Viewing statistics that can be filtered by city, day, and animal, which can be exported in PDF or
+                    HTML format</li>
+                <li>Viewing the most recent reports uploaded by other users</li>
+            </ul>
+        </section>
+        <section id="operating-environment">
+            <h3>Operating Environment</h3>
+            <p>
+                Being a web application, it will run on any modern browser. Thus, the application will be able to run on
+                all operating systems that support a browser such as: Android, iOS, Windows, Linux, etc.
+            </p>
+        </section>
+    </section>
+
+    <section id="interfaces">
+        <h2>Interfaces</h2>
+        <section id="user-interfaces">
+            <h3>User Interface</h3>
+            <p>
+                The application offers a modern interface that is visually pleasing to enhance the user experience.
+                ReDat can be used on both large screens and on the browser of a phone with a smaller screen size,
+                continuing to offer a pleasant experience to the user thanks to its responsive design.
+            </p>
+        </section>
+    </section>
+
+    <section id="source-code">
+        <h2>Source Code</h2>
+        <p>
+            For source code management of the project <a href="https://github.com" target="_blank">GitHub</a> was used.
+            Commits are made by both team members. For most pages, a separate branch was created on which code was
+            updated by both members, so the most recent push always contains the latest version of the code.
+        </p>
+        <p>
+            The source code of the project will be available <a href="https://github.com/VadanaAndrei/Web2024"
+                target="_blank">here</a>
+            when it is made public.
+        </p>
+    </section>
+
+    <section>
+        <h2>Security</h2>
+        <section>
+            <h2>SQL Injection</h2>
+            <p>
+                The site will prevent SQL Injection attacks. The user will not be allowed to enter special characters
+                such as ', with the verification being done at the server level. Thus, SQL code will not be able to run
+                in the database when a user is created or any other interaction where a new record is added/modified in
+                the database.
+            </p>
+        </section>
+    </section>
+
+</body>
+
+</html>
