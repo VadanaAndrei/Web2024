@@ -1,0 +1,174 @@
+@import url("navbar.css");
+@import url("footer.css");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container-login-register {
+  display: flex;
+  justify-content: center;
+  background-color: #fefef3;
+  align-items: center;
+  gap: 150px;
+  padding: 40px 20px 70px;
+}
+
+.container-login-register h2 {
+  text-align: center;
+}
+
+form {
+  font-family: 'Trebuchet MS', sans-serif;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 5px;
+  margin-left: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.container-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30vw;
+  height: 40vh;
+  padding: 20px;
+}
+
+.container-register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40vw;
+  height: 60vh;
+  padding: 40px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="email"],
+select,
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #466e61;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #2b4d42;
+}
+
+::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media screen and (max-width: 435px) {
+  .container-login-register {
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 15px 40px 15px;
+  }
+
+  form {
+    margin: 0;
+    padding: 20px;
+    flex-basis: auto;
+  }
+
+  .container-login,
+  .container-register {
+    width: 100%;
+    padding: 20px;
+    height: auto;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  input[type="email"],
+  select,
+  input[type="password"],
+  button {
+    padding: 10px;
+  }
+
+  button {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 435px) and (max-width: 1024px) {
+  .container-login-register {
+    flex-direction: column;
+    gap: 100px;
+    padding: 50px 15px 80px 15px;
+  }
+
+  .container-login,
+  .container-register {
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  form {
+    width: 500px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .container-login {
+    width: 500px;
+    border-radius: 4px;
+  }
+
+  .container-register {
+    width: 500px;
+    border-radius: 4px;
+  }
+}
