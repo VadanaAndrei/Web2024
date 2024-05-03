@@ -32,11 +32,27 @@
                         </div>
                     </li>
                     <li>
-                        <a class="profile" href="../html-pages/login-register.html">
+                        <a class="profile" href="#" id="profileLink">
                             <span class="material-symbols-outlined">
                                 person
                             </span>
                         </a>
+
+                        <script>
+                            document.getElementById('profileLink').addEventListener('click', function() {
+                                fetch('../php-pages/check-login-status.php')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.loggedIn) {
+                                            window.location.href = '../html-pages/profile.html';
+                                        } else {
+                                            window.location.href = '../html-pages/login-register.html';
+                                        }
+                                    })
+                                    .catch(error => console.error('Error:', error));
+                            });
+                            </script>
+
                     </li>
                 </ul>
             </div>
@@ -50,15 +66,32 @@
                 <span class="material-symbols-outlined">person</span>
                 <h1>Profile</h1>
                 <br>
-                <p>Username: Lorem</p>
+                <p>Username: <span id="username">Loading...</span></p>
                 <br>
-                <p>E-mail: ipsum@gmail.com</p>
+                <p>E-mail: <span id="email">Loading...</span></p>
             </div>
             <div class="buttons-container">
-                <button type="submit">Logout</button>
+                <button onclick="location.href='../php-pages/logout.php'" type="submit">Logout</button>
                 <button type="button" onclick="window.location.href='../html-pages/change-password.html';">Change password</button>
             </div>
+
+            <script>
+                function fetchUserData() {
+                    fetch('../php-pages/profile.php')
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('username').textContent = data.username;
+                            document.getElementById('email').textContent = data.email;
+                        })
+                        .catch(error => console.error('Error fetching data:', error));
+                }
+        
+                window.onload = fetchUserData;
+            </script>
+
         </div>
+
+        
 
     </main>
 

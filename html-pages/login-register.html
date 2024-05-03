@@ -32,11 +32,27 @@
                         </div>
                     </li>
                     <li>
-                        <a class="profile" href="../html-pages/login-register.html">
+                        <a class="profile" href="#" id="profileLink">
                             <span class="material-symbols-outlined">
                                 person
                             </span>
                         </a>
+
+                        <script>
+                            document.getElementById('profileLink').addEventListener('click', function() {
+                                fetch('../php-pages/check-login-status.php')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.loggedIn) {
+                                            window.location.href = '../html-pages/profile.html';
+                                        } else {
+                                            window.location.href = '../html-pages/login-register.html';
+                                        }
+                                    })
+                                    .catch(error => console.error('Error:', error));
+                            });
+                            </script>
+
                     </li>
                 </ul>
             </div>
@@ -55,7 +71,7 @@
                     </div>
                     <div class="form-group">
                         <label for="password-login">Password:</label>
-                        <input type="password" id="password-login" name="confirm-password" required placeholder="Your password...">
+                        <input type="password" id="password-login" name="password" required placeholder="Your password...">
                     </div>
                     <button type="submit">Login</button>
                     <button type="button" onclick="window.location.href='../html-pages/forgot-password.html';">Forgot password</button>
