@@ -24,41 +24,35 @@ if ($_POST['password'] !== $_POST['confirm-password']) {
     die('Passwords do not match');
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = !empty($_POST['username']) ? trim($_POST['username']) : null;
-    $email = !empty($_POST['e-mail']) ? trim($_POST['e-mail']) : null;
-    $password = !empty($_POST['password']) ? $_POST['password'] : null;
-    $confirm_password = !empty($_POST['confirm-password']) ? $_POST['confirm-password'] : null;
+$password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-    $password_hash = password_hash($password, PASSWORD_DEFAULT);
+$mysqli = require __DIR__ . "/connect.php";
 
-    try {
-        $pgsql = require __DIR__ . '/connect.php';
+$sql = "INSERT INTO users (username, email, password)
+        VALUES (?, ?, ?)";
+        
+$stmt = $mysqli->stmt_init();
 
-        $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-        $stmt = $pgsql->prepare($sql);
+if ( ! $stmt->prepare($sql)) {
+    die("SQL error: " . $mysqli->error);
+}
 
-        if ($stmt === false) {
-            throw new Exception("SQL error: " . $pgsql->errorInfo()[2]);
-        }
+$stmt->bind_param("sss",
+                  $_POST["username"],
+                  $_POST["e-mail"],
+                  $password_hash);
+                  
+if ($stmt->execute()) {
 
-        $stmt->bindParam(1, $username, PDO::PARAM_STR);
-        $stmt->bindParam(2, $email, PDO::PARAM_STR);
-        $stmt->bindParam(3, $password_hash, PDO::PARAM_STR);
-
-        if (!$stmt->execute()) {
-            throw new Exception("Execution error: " . $stmt->errorInfo()[2]);
-        }
-
-        header('Location:../html-pages/index.html');  //de facut o trimitere spre o alta pagina
-        exit;
-    } catch (PDOException $e) {
-        $errorInfo = $e->errorInfo;
-        if ($errorInfo[0] == '23505') {
-            die("Username or email already exists. Please try a different one.");
-        } else {
-            die($e->getMessage());
-        }
+    header("Location: ../html-pages/login-register.html");
+    exit;
+    
+} else {
+    
+    if ($mysqli->errno === 1062) {
+        die("Email already taken");
+    } else {
+        die($mysqli->error . " " . $mysqli->errno);
     }
 }
 

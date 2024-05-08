@@ -1,20 +1,17 @@
 <?php
-$host = "localhost";  
-$port = "5432";       
+$host = "localhost";       
 $dbname = "FePA"; 
-$user = "postgres";    
+$username = "root";    
 $password = "1234"; 
 
-$dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password";
-
-try {
-    $dbconn = new PDO($dsn);
-    $dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    return $dbconn;
-} catch (PDOException $e) {
-    echo "Connecting error: " . $e->getMessage();
-    exit;
+$mysqli = new mysqli(hostname: $host,
+                     username: $username,
+                     password: $password,
+                     database: $dbname);
+                     
+if ($mysqli->connect_errno) {
+    die("Connection error: " . $mysqli->connect_error);
 }
 
-
+return $mysqli;
 ?>
