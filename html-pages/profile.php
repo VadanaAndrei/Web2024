@@ -1,3 +1,15 @@
+<?php
+session_start();
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+if (!isset($_SESSION["user_id"])) {
+    header("Location: ../html-pages/login-register.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,9 +56,9 @@
                                     .then(response => response.json())
                                     .then(data => {
                                         if (data.loggedIn) {
-                                            window.location.href = '../html-pages/profile.html';
+                                            window.location.href = '../html-pages/profile.php';
                                         } else {
-                                            window.location.href = '../html-pages/login-register.html';
+                                            window.location.href = '../html-pages/login-register.php';
                                         }
                                     })
                                     .catch(error => console.error('Error:', error));
@@ -77,7 +89,7 @@
 
             <script>
                 function fetchUserData() {
-                    fetch('../php-pages/profile.php')
+                    fetch('../php-pages/get-user-info.php')
                         .then(response => response.json())
                         .then(data => {
                             document.getElementById('username').textContent = data.username;

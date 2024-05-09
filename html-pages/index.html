@@ -42,9 +42,9 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.loggedIn) {
-                            window.location.href = '../html-pages/profile.html';
+                            window.location.href = '../html-pages/profile.php';
                         } else {
-                            window.location.href = '../html-pages/login-register.html';
+                            window.location.href = '../html-pages/login-register.php';
                         }
                     })
                     .catch(error => console.error('Error:', error));

@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             
             $_SESSION["user_id"] = $user["user_id"];
             
-            header("Location: ../html-pages/profile.html");
+            header("Location: ../html-pages/profile.php");
             exit;
         }
     }
