@@ -1,3 +1,10 @@
+<?php
+$token = '';
+if (isset($_GET['token'])) {
+    $token = $_GET['token']; 
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,12 +69,10 @@
 
     <main>
         <div class="container-new-password">
-            <form action="/submit" method="post">
+            <form action="../php-pages/process-reset-password.php" method="post">
+            <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
+
                 <h2>Change password</h2><br><br>
-                <div class="form-group">
-                    <label for="code">Code:</label>
-                    <input type="text" id="code" name="code" required placeholder="Enter the code you received...">
-                </div>
                 <div class="form-group">
                     <label for="password">New Password:</label>
                     <input type="password" id="password" name="password" required
@@ -75,7 +80,7 @@
                 </div>
                 <div class="form-group">
                     <label for="confirm-password">Confirm New Password:</label>
-                    <input type="password" id="confirm-password" name="password" required
+                    <input type="password" id="confirm-password" name="confirm-password" required
                         placeholder="Confirm your new password...">
                 </div>
                 <button type="submit">Change password</button>
