@@ -1,3 +1,15 @@
+<?php
+session_start();
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+if (!isset($_SESSION["user_id"])) {
+    header("Location: ../html-pages/login-register.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,7 +74,7 @@
 
     <main>
         <div class="container-change-password">
-            <form action="/submit" method="post">
+            <form action="../php-pages/change-password.php" method="post">
                 <h2>Change password</h2><br><br>
                 <div class="form-group">
                     <label for="password">Old Password:</label>
@@ -70,12 +82,12 @@
                 </div>
                 <div class="form-group">
                     <label for="new-password">New Password:</label>
-                    <input type="password" id="new-password" name="password" required
+                    <input type="password" id="new-password" name="new-password" required
                         placeholder="Enter your new password...">
                 </div>
                 <div class="form-group">
                     <label for="confirm-password">Confirm New Password:</label>
-                    <input type="password" id="confirm-password" name="password" required
+                    <input type="password" id="confirm-password" name="confirm-password" required
                         placeholder="Confirm your new password...">
                 </div>
                 <button type="submit">Change password</button>
