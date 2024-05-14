@@ -8,6 +8,12 @@ if (isset($_SESSION["user_id"])) {
     header("Location: ../html-pages/profile.php");
     exit;
 }
+
+$error_message = '';
+if (isset($_SESSION['error_message'])) {
+    $error_message = $_SESSION['error_message'];
+    unset($_SESSION['error_message']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +70,7 @@ if (isset($_SESSION["user_id"])) {
                                     })
                                     .catch(error => console.error('Error:', error));
                             });
-                            </script>
+                        </script>
 
                     </li>
                 </ul>
@@ -86,9 +92,11 @@ if (isset($_SESSION["user_id"])) {
                         <label for="password-login">Password:</label>
                         <input type="password" id="password-login" name="password" required placeholder="Your password...">
                     </div>
+                    <?php if (!empty($error_message)): ?>
+                        <p class="error-text"><?php echo htmlspecialchars($error_message); ?></p>
+                    <?php endif; ?>
                     <button type="submit">Login</button>
                     <button type="button" onclick="window.location.href='../html-pages/forgot-password.html';">Forgot password</button>
-
                 </form>
             </div>
             <div class="container-register">

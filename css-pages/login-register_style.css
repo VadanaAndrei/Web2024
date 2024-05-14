@@ -54,6 +54,10 @@ form {
   height: 13px;
 }
 
+p.error-text {
+  margin-bottom: 20px;
+}
+
 .container-login {
   display: flex;
   flex-direction: column;
