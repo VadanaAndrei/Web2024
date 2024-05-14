@@ -24,6 +24,7 @@ if (isset($_SESSION["user_id"])) {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../js-pages/login-register.js" defer></script>
 </head>
 
 <body>
@@ -75,7 +76,7 @@ if (isset($_SESSION["user_id"])) {
     <main>
         <div class="container-login-register">
             <div class="container-login">
-                <form action="../php-pages/login.php" method="POST">
+                <form action="../php-pages/login.php" method="POST" id="form-login">
                     <h2>Login</h2><br><br>
                     <div class="form-group">
                         <label for="e-mail-login">E-mail:</label>
@@ -91,25 +92,29 @@ if (isset($_SESSION["user_id"])) {
                 </form>
             </div>
             <div class="container-register">
-                <form action="../php-pages/register.php" method="POST" novalidate>
+                <form action="../php-pages/register.php" method="POST" novalidate id="form-register">
                     <h2>Register</h2><br><br>
                     <div class="form-group">
                         <label for="e-mail-register">E-mail:</label>
                         <input type="email" id="e-mail-register" name="e-mail" required placeholder="Enter your e-mail...">
+                        <div class="error-text"></div>
                     </div>
                     <div class="form-group">
                         <label for="username">Username:</label>
                         <input type="text" id="username" name="username" required placeholder="Create an username...">
+                        <div class="error-text"></div>
                     </div>
                     <div class="form-group">
                         <label for="password-register">Password:</label>
                         <input type="password" id="password-register" name="password" required
                             placeholder="Create a password...">
+                        <div class="error-text"></div>
                     </div>
                     <div class="form-group">
                         <label for="confirm-password-register">Confirm Password:</label>
                         <input type="password" id="confirm-password-register" name="confirm-password" required
                             placeholder="Confirm your password...">
+                        <div class="error-text"></div>    
                     </div>
                     <button type="submit">Register</button>
                 </form>

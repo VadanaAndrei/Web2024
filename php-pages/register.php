@@ -30,29 +30,36 @@ $mysqli = require __DIR__ . "/connect.php";
 
 $sql = "INSERT INTO users (username, email, password)
         VALUES (?, ?, ?)";
-        
+
 $stmt = $mysqli->stmt_init();
 
-if ( ! $stmt->prepare($sql)) {
+if (!$stmt->prepare($sql)) {
     die("SQL error: " . $mysqli->error);
 }
 
-$stmt->bind_param("sss",
-                  $_POST["username"],
-                  $_POST["e-mail"],
-                  $password_hash);
-                  
-if ($stmt->execute()) {
+$stmt->bind_param(
+    "sss",
+    $_POST["username"],
+    $_POST["e-mail"],
+    $password_hash
+);
 
+if ($stmt->execute()) {
     header("Location: ../html-pages/login-register.php");
     exit;
-    
 } else {
-    
     if ($mysqli->errno === 1062) {
-        die("Email already taken");
+        $error = $mysqli->error;
+        if (strpos($error, 'username') !== false) {
+            die("Username already taken");
+        } elseif (strpos($error, 'email') !== false) {
+            die("Email already taken");
+        } else {
+            die("Duplicate entry");
+        }
     } else {
         die($mysqli->error . " " . $mysqli->errno);
     }
 }
+
 

@@ -26,7 +26,7 @@ if ($mysqli->affected_rows > 0) {
     $subject = "Reset Your Password";
     $message = "<html><body>";
     $message .= "You have requested to reset your password. Please ";
-    $message .= "<a href='localhost/Web2024/php-pages/reset-password.php?token=$token'>click here</a>";
+    $message .= "<a href='http://localhost/Web2024/php-pages/reset-password.php?token=$token'>click here</a>";
     $message .= " to reset your password.";
     $message .= "</body></html>";
     $headers = "MIME-Version: 1.0\r\n";
