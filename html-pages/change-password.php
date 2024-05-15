@@ -5,6 +5,7 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
 if (!isset($_SESSION["user_id"])) {
+    $_SESSION['error_message'] = 'You need to be logged in to access this feature';
     header("Location: ../html-pages/login-register.php");
     exit;
 }
@@ -24,6 +25,7 @@ if (!isset($_SESSION["user_id"])) {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../js-pages/change-password.js" defer></script>
 </head>
 
 <body>
@@ -74,21 +76,24 @@ if (!isset($_SESSION["user_id"])) {
 
     <main>
         <div class="container-change-password">
-            <form action="../php-pages/change-password.php" method="post">
+            <form action="../php-pages/change-password.php" method="post" id="form">
                 <h2>Change password</h2><br><br>
                 <div class="form-group">
                     <label for="password">Old Password:</label>
                     <input type="password" id="password" name="password" required placeholder="Enter your old password...">
+                    <div class="error-text"></div>
                 </div>
                 <div class="form-group">
                     <label for="new-password">New Password:</label>
                     <input type="password" id="new-password" name="new-password" required
                         placeholder="Enter your new password...">
+                    <div class="error-text"></div>
                 </div>
                 <div class="form-group">
                     <label for="confirm-password">Confirm New Password:</label>
                     <input type="password" id="confirm-password" name="confirm-password" required
                         placeholder="Confirm your new password...">
+                    <div class="error-text"></div>
                 </div>
                 <button type="submit">Change password</button>
             </form>

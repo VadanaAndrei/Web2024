@@ -5,6 +5,7 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
 if (!isset($_SESSION["user_id"])) {
+    $_SESSION['error_message'] = 'You need to be logged in to access this feature';
     header("Location: ../html-pages/login-register.php");
     exit;
 }
@@ -84,7 +85,7 @@ if (!isset($_SESSION["user_id"])) {
             </div>
             <div class="buttons-container">
                 <button onclick="location.href='../php-pages/logout.php'" type="submit">Logout</button>
-                <button type="button" onclick="window.location.href='../html-pages/change-password.html';">Change password</button>
+                <button type="button" onclick="window.location.href='../html-pages/change-password.php';">Change password</button>
             </div>
 
             <script>
