@@ -62,7 +62,7 @@
 
     <main>
         <div class="container-forgot-password">
-                <form action="../php-pages/send-password.php" method="post">
+                <form action="ForgotPassword/sendPassword" method="post">
                     <h2>Recover your password</h2><br><br>
                     <div class="form-group">
                         <label for="e-mail">E-mail:</label>

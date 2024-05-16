@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/app/controllers/ChangePassword.php" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/app/controllers/ForgotPassword.php" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/app/controllers/LoginRegister.php" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/app/controllers/NewPassword.php" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/php-pages/check-exists.php" dialect="GenericSQL" />
+  </component>
+</project>

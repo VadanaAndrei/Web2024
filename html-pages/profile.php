@@ -84,7 +84,7 @@ if (!isset($_SESSION["user_id"])) {
                 <p>E-mail: <span id="email">Loading...</span></p>
             </div>
             <div class="buttons-container">
-                <button onclick="location.href='../php-pages/logout.php'" type="submit">Logout</button>
+                <button onclick="location.href='LoginRegister/logout'" type="submit">Logout</button>
                 <button type="button" onclick="window.location.href='ChangePassword';">Change password</button>
             </div>
 

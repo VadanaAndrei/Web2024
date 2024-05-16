@@ -82,7 +82,7 @@ if (isset($_SESSION['error_message'])) {
     <main>
         <div class="container-login-register">
             <div class="container-login">
-                <form action="../php-pages/login.php" method="POST" id="form-login">
+                <form action="LoginRegister/authenticate" method="POST" id="form-login">
                     <h2>Login</h2><br><br>
                     <div class="form-group">
                         <label for="e-mail-login">E-mail:</label>
@@ -100,7 +100,7 @@ if (isset($_SESSION['error_message'])) {
                 </form>
             </div>
             <div class="container-register">
-                <form action="../php-pages/register.php" method="POST" novalidate id="form-register">
+                <form action="LoginRegister/register" method="POST" novalidate id="form-register">
                     <h2>Register</h2><br><br>
                     <div class="form-group">
                         <label for="e-mail-register">E-mail:</label>

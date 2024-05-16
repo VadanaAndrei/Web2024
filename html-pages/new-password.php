@@ -69,7 +69,7 @@ if (isset($_GET['token'])) {
 
     <main>
         <div class="container-new-password">
-            <form action="../php-pages/process-reset-password.php" method="post">
+            <form action="NewPassword/processResetPassword" method="post">
             <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
 
                 <h2>Change password</h2><br><br>

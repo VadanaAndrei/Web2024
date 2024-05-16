@@ -76,7 +76,7 @@ if (!isset($_SESSION["user_id"])) {
 
     <main>
         <div class="container-change-password">
-            <form action="../php-pages/change-password.php" method="post" id="form">
+            <form action="ChangePassword/changePassword" method="post" id="form">
                 <h2>Change password</h2><br><br>
                 <div class="form-group">
                     <label for="password">Old Password:</label>
