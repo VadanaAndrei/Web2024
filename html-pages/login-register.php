@@ -5,7 +5,7 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
 if (isset($_SESSION["user_id"])) {
-    header("Location: ../html-pages/profile.php");
+    header("Location: Profile");
     exit;
 }
 
@@ -34,50 +34,50 @@ if (isset($_SESSION['error_message'])) {
 </head>
 
 <body>
-    <header>
-        <div class="background">
-            <div class="navbar">
-                <a class="logo-link" href="home.php"><img src="../assets/logo_web.png" alt="FePA"
-                                                          class="navbar__logo"></a>
-                <ul class="navbar__buttons">
-                    <li><a class="navbar__home" href="home.php">Home</a></li>
-                    <li><a class="navbar__about" href="about.php">About</a></li>
-                    <li><a class="navbar__contact" href="#contact-id">Contact</a></li>
-                    <li><a class="navbar__help" href="help.php">Help</a></li>
-                    <li>
-                        <div class="search">
-                            <span class="search__icon material-symbols-outlined">search</span>
-                            <input class="search__input" type="search" placeholder="Search">
-                        </div>
-                    </li>
-                    <li>
-                        <a class="profile" href="#" id="profileLink">
-                            <span class="material-symbols-outlined">
-                                person
-                            </span>
-                        </a>
+<header>
+    <div class="background">
+        <div class="navbar">
+            <a class="logo-link" href="Home"><img src="../assets/logo_web.png" alt="FePA"
+                                                  class="navbar__logo"></a>
+            <ul class="navbar__buttons">
+                <li><a class="navbar__home" href="Home">Home</a></li>
+                <li><a class="navbar__about" href="About">About</a></li>
+                <li><a class="navbar__contact" href="#contact-id">Contact</a></li>
+                <li><a class="navbar__help" href="Help">Help</a></li>
+                <li>
+                    <div class="search">
+                        <span class="search__icon material-symbols-outlined">search</span>
+                        <input class="search__input" type="search" placeholder="Search">
+                    </div>
+                </li>
+                <li>
+                    <a class="profile" href="#" id="profileLink">
+              <span class="material-symbols-outlined">
+                person
+              </span>
+                    </a>
 
-                        <script>
-                            document.getElementById('profileLink').addEventListener('click', function() {
-                                fetch('../php-pages/check-login-status.php')
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.loggedIn) {
-                                            window.location.href = '../html-pages/profile.php';
-                                        } else {
-                                            window.location.href = '../html-pages/login-register.php';
-                                        }
-                                    })
-                                    .catch(error => console.error('Error:', error));
-                            });
-                        </script>
+                    <script>
+                        document.getElementById('profileLink').addEventListener('click', function() {
+                            fetch('../php-pages/check-login-status.php')
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.loggedIn) {
+                                        window.location.href = 'Profile';
+                                    } else {
+                                        window.location.href = 'LoginRegister';
+                                    }
+                                })
+                                .catch(error => console.error('Error:', error));
+                        });
+                    </script>
 
-                    </li>
-                </ul>
-            </div>
+                </li>
+            </ul>
         </div>
+    </div>
 
-    </header>
+</header>
 
     <main>
         <div class="container-login-register">
@@ -96,7 +96,7 @@ if (isset($_SESSION['error_message'])) {
                         <p class="error-text"><?php echo htmlspecialchars($error_message); ?></p>
                     <?php endif; ?>
                     <button type="submit">Login</button>
-                    <button type="button" onclick="window.location.href='forgot-password.php';">Forgot password</button>
+                    <button type="button" onclick="window.location.href='ForgotPassword';">Forgot password</button>
                 </form>
             </div>
             <div class="container-register">

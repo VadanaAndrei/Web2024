@@ -18,13 +18,13 @@
   <header>
     <div class="background">
       <div class="navbar">
-        <a class="logo-link" href="home.php"><img src="../assets/logo_web.png" alt="FePA"
+        <a class="logo-link" href="Home"><img src="../assets/logo_web.png" alt="FePA"
                                                   class="navbar__logo"></a>
         <ul class="navbar__buttons">
-          <li><a class="navbar__home" href="home.php">Home</a></li>
-          <li><a class="navbar__about" href="about.php">About</a></li>
+          <li><a class="navbar__home" href="Home">Home</a></li>
+          <li><a class="navbar__about" href="About">About</a></li>
           <li><a class="navbar__contact" href="#contact-id">Contact</a></li>
-          <li><a class="navbar__help" href="help.php">Help</a></li>
+          <li><a class="navbar__help" href="Help">Help</a></li>
           <li>
             <div class="search">
               <span class="search__icon material-symbols-outlined">search</span>
@@ -44,9 +44,9 @@
                       .then(response => response.json())
                       .then(data => {
                           if (data.loggedIn) {
-                              window.location.href = '../html-pages/profile.php';
+                              window.location.href = 'Profile';
                           } else {
-                              window.location.href = '../html-pages/login-register.php';
+                              window.location.href = 'LoginRegister';
                           }
                       })
                       .catch(error => console.error('Error:', error));
