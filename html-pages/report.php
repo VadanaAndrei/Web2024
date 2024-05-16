@@ -26,6 +26,7 @@ if (!isset($_SESSION["user_id"])) {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../js-pages/report.js" defe></script>
 </head>
 
 <body>
@@ -54,7 +55,7 @@ if (!isset($_SESSION["user_id"])) {
 
                     <script>
                         document.getElementById('profileLink').addEventListener('click', function() {
-                            fetch('../php-pages/check-login-status.php')
+                            fetch('../checks/check-login-status.php')
                                 .then(response => response.json())
                                 .then(data => {
                                     if (data.loggedIn) {
@@ -76,20 +77,267 @@ if (!isset($_SESSION["user_id"])) {
 
     <main>
         <div class="container_report">
-            <form action="/submit" method="post">
+            <form action="/submit" method="post" id="report-form" enctype="multipart/form-data">
                 <h2>Report a sighting</h2><br><br>
                 <div class="form-group">
                     <label for="species">Species:</label>
-                    <input type="text" id="species" name="species" required placeholder="Example: Dog/Cat...">
+                    <select id="species" name="species">
+                        <option value="">Select an animal</option>
+                        <option value="Aardvark">Aardvark</option>
+                        <option value="Albatross">Albatross</option>
+                        <option value="Alligator">Alligator</option>
+                        <option value="Alpaca">Alpaca</option>
+                        <option value="Ant">Ant</option>
+                        <option value="Anteater">Anteater</option>
+                        <option value="Antelope">Antelope</option>
+                        <option value="Ape">Ape</option>
+                        <option value="Armadillo">Armadillo</option>
+                        <option value="Donkey">Donkey</option>
+                        <option value="Baboon">Baboon</option>
+                        <option value="Badger">Badger</option>
+                        <option value="Barracuda">Barracuda</option>
+                        <option value="Bat">Bat</option>
+                        <option value="Bear">Bear</option>
+                        <option value="Beaver">Beaver</option>
+                        <option value="Bee">Bee</option>
+                        <option value="Bison">Bison</option>
+                        <option value="Boar">Boar</option>
+                        <option value="Buffalo">Buffalo</option>
+                        <option value="Butterfly">Butterfly</option>
+                        <option value="Camel">Camel</option>
+                        <option value="Capybara">Capybara</option>
+                        <option value="Caribou">Caribou</option>
+                        <option value="Cassowary">Cassowary</option>
+                        <option value="Cat">Cat</option>
+                        <option value="Caterpillar">Caterpillar</option>
+                        <option value="Cattle">Cattle</option>
+                        <option value="Chamois">Chamois</option>
+                        <option value="Cheetah">Cheetah</option>
+                        <option value="Chicken">Chicken</option>
+                        <option value="Chimpanzee">Chimpanzee</option>
+                        <option value="Chinchilla">Chinchilla</option>
+                        <option value="Chough">Chough</option>
+                        <option value="Clam">Clam</option>
+                        <option value="Cobra">Cobra</option>
+                        <option value="Cockroach">Cockroach</option>
+                        <option value="Cod">Cod</option>
+                        <option value="Cormorant">Cormorant</option>
+                        <option value="Coyote">Coyote</option>
+                        <option value="Crab">Crab</option>
+                        <option value="Crane">Crane</option>
+                        <option value="Crocodile">Crocodile</option>
+                        <option value="Crow">Crow</option>
+                        <option value="Curlew">Curlew</option>
+                        <option value="Deer">Deer</option>
+                        <option value="Dinosaur">Dinosaur</option>
+                        <option value="Dog">Dog</option>
+                        <option value="Dogfish">Dogfish</option>
+                        <option value="Dolphin">Dolphin</option>
+                        <option value="Dotterel">Dotterel</option>
+                        <option value="Dove">Dove</option>
+                        <option value="Dragonfly">Dragonfly</option>
+                        <option value="Duck">Duck</option>
+                        <option value="Dugong">Dugong</option>
+                        <option value="Dunlin">Dunlin</option>
+                        <option value="Eagle">Eagle</option>
+                        <option value="Echidna">Echidna</option>
+                        <option value="Eel">Eel</option>
+                        <option value="Eland">Eland</option>
+                        <option value="Elephant">Elephant</option>
+                        <option value="Elk">Elk</option>
+                        <option value="Emu">Emu</option>
+                        <option value="Falcon">Falcon</option>
+                        <option value="Ferret">Ferret</option>
+                        <option value="Finch">Finch</option>
+                        <option value="Fish">Fish</option>
+                        <option value="Flamingo">Flamingo</option>
+                        <option value="Fly">Fly</option>
+                        <option value="Fox">Fox</option>
+                        <option value="Frog">Frog</option>
+                        <option value="Gaur">Gaur</option>
+                        <option value="Gazelle">Gazelle</option>
+                        <option value="Gerbil">Gerbil</option>
+                        <option value="Giraffe">Giraffe</option>
+                        <option value="Gnat">Gnat</option>
+                        <option value="Gnu">Gnu</option>
+                        <option value="Goat">Goat</option>
+                        <option value="Goldfinch">Goldfinch</option>
+                        <option value="Goldfish">Goldfish</option>
+                        <option value="Goose">Goose</option>
+                        <option value="Gorilla">Gorilla</option>
+                        <option value="Goshawk">Goshawk</option>
+                        <option value="Grasshopper">Grasshopper</option>
+                        <option value="Grouse">Grouse</option>
+                        <option value="Guanaco">Guanaco</option>
+                        <option value="Gull">Gull</option>
+                        <option value="Hamster">Hamster</option>
+                        <option value="Hare">Hare</option>
+                        <option value="Hawk">Hawk</option>
+                        <option value="Hedgehog">Hedgehog</option>
+                        <option value="Heron">Heron</option>
+                        <option value="Herring">Herring</option>
+                        <option value="Hippopotamus">Hippopotamus</option>
+                        <option value="Hornet">Hornet</option>
+                        <option value="Horse">Horse</option>
+                        <option value="Hummingbird">Hummingbird</option>
+                        <option value="Hyena">Hyena</option>
+                        <option value="Ibex">Ibex</option>
+                        <option value="Ibis">Ibis</option>
+                        <option value="Jackal">Jackal</option>
+                        <option value="Jaguar">Jaguar</option>
+                        <option value="Jay">Jay</option>
+                        <option value="Jellyfish">Jellyfish</option>
+                        <option value="Kangaroo">Kangaroo</option>
+                        <option value="Kingfisher">Kingfisher</option>
+                        <option value="Koala">Koala</option>
+                        <option value="Kookabura">Kookabura</option>
+                        <option value="Kouprey">Kouprey</option>
+                        <option value="Kudu">Kudu</option>
+                        <option value="Lapwing">Lapwing</option>
+                        <option value="Lark">Lark</option>
+                        <option value="Lemur">Lemur</option>
+                        <option value="Leopard">Leopard</option>
+                        <option value="Lion">Lion</option>
+                        <option value="Llama">Llama</option>
+                        <option value="Lobster">Lobster</option>
+                        <option value="Locust">Locust</option>
+                        <option value="Loris">Loris</option>
+                        <option value="Louse">Louse</option>
+                        <option value="Lyrebird">Lyrebird</option>
+                        <option value="Magpie">Magpie</option>
+                        <option value="Mallard">Mallard</option>
+                        <option value="Manatee">Manatee</option>
+                        <option value="Mandrill">Mandrill</option>
+                        <option value="Mantis">Mantis</option>
+                        <option value="Marten">Marten</option>
+                        <option value="Meerkat">Meerkat</option>
+                        <option value="Mink">Mink</option>
+                        <option value="Mole">Mole</option>
+                        <option value="Mongoose">Mongoose</option>
+                        <option value="Monkey">Monkey</option>
+                        <option value="Moose">Moose</option>
+                        <option value="Mosquito">Mosquito</option>
+                        <option value="Mouse">Mouse</option>
+                        <option value="Mule">Mule</option>
+                        <option value="Narwhal">Narwhal</option>
+                        <option value="Newt">Newt</option>
+                        <option value="Nightingale">Nightingale</option>
+                        <option value="Octopus">Octopus</option>
+                        <option value="Okapi">Okapi</option>
+                        <option value="Opossum">Opossum</option>
+                        <option value="Oryx">Oryx</option>
+                        <option value="Ostrich">Ostrich</option>
+                        <option value="Otter">Otter</option>
+                        <option value="Owl">Owl</option>
+                        <option value="Oyster">Oyster</option>
+                        <option value="Panther">Panther</option>
+                        <option value="Parrot">Parrot</option>
+                        <option value="Partridge">Partridge</option>
+                        <option value="Peafowl">Peafowl</option>
+                        <option value="Pelican">Pelican</option>
+                        <option value="Penguin">Penguin</option>
+                        <option value="Pheasant">Pheasant</option>
+                        <option value="Pig">Pig</option>
+                        <option value="Pigeon">Pigeon</option>
+                        <option value="Pony">Pony</option>
+                        <option value="Porcupine">Porcupine</option>
+                        <option value="Porpoise">Porpoise</option>
+                        <option value="Quail">Quail</option>
+                        <option value="Quelea">Quelea</option>
+                        <option value="Quetzal">Quetzal</option>
+                        <option value="Rabbit">Rabbit</option>
+                        <option value="Raccoon">Raccoon</option>
+                        <option value="Rail">Rail</option>
+                        <option value="Ram">Ram</option>
+                        <option value="Rat">Rat</option>
+                        <option value="Raven">Raven</option>
+                        <option value="Red deer">Red deer</option>
+                        <option value="Red panda">Red panda</option>
+                        <option value="Reindeer">Reindeer</option>
+                        <option value="Rhinoceros">Rhinoceros</option>
+                        <option value="Rook">Rook</option>
+                        <option value="Salamander">Salamander</option>
+                        <option value="Salmon">Salmon</option>
+                        <option value="Sand Dollar">Sand Dollar</option>
+                        <option value="Sandpiper">Sandpiper</option>
+                        <option value="Sardine">Sardine</option>
+                        <option value="Scorpion">Scorpion</option>
+                        <option value="Seahorse">Seahorse</option>
+                        <option value="Seal">Seal</option>
+                        <option value="Shark">Shark</option>
+                        <option value="Sheep">Sheep</option>
+                        <option value="Shrew">Shrew</option>
+                        <option value="Skunk">Skunk</option>
+                        <option value="Snail">Snail</option>
+                        <option value="Snake">Snake</option>
+                        <option value="Sparrow">Sparrow</option>
+                        <option value="Spider">Spider</option>
+                        <option value="Spoonbill">Spoonbill</option>
+                        <option value="Squid">Squid</option>
+                        <option value="Squirrel">Squirrel</option>
+                        <option value="Starling">Starling</option>
+                        <option value="Stingray">Stingray</option>
+                        <option value="Stinkbug">Stinkbug</option>
+                        <option value="Stork">Stork</option>
+                        <option value="Swallow">Swallow</option>
+                        <option value="Swan">Swan</option>
+                        <option value="Tapir">Tapir</option>
+                        <option value="Tarsier">Tarsier</option>
+                        <option value="Termite">Termite</option>
+                        <option value="Tiger">Tiger</option>
+                        <option value="Toad">Toad</option>
+                        <option value="Trout">Trout</option>
+                        <option value="Turkey">Turkey</option>
+                        <option value="Turtle">Turtle</option>
+                        <option value="Viper">Viper</option>
+                        <option value="Vulture">Vulture</option>
+                        <option value="Wallaby">Wallaby</option>
+                        <option value="Walrus">Walrus</option>
+                        <option value="Wasp">Wasp</option>
+                        <option value="Weasel">Weasel</option>
+                        <option value="Whale">Whale</option>
+                        <option value="Wildcat">Wildcat</option>
+                        <option value="Wolf">Wolf</option>
+                        <option value="Wolverine">Wolverine</option>
+                        <option value="Wombat">Wombat</option>
+                        <option value="Woodcock">Woodcock</option>
+                        <option value="Woodpecker">Woodpecker</option>
+                        <option value="Worm">Worm</option>
+                        <option value="Wren">Wren</option>
+                        <option value="Yak">Yak</option>
+                        <option value="Zebra">Zebra</option>
+                    </select>
+                    <div class="error-text" id="species-error"></div>
                 </div>
                 <div class="form-group">
                     <label for="description">Description:</label>
                     <textarea id="description" name="description" required
                         placeholder="Write a description..."></textarea>
+                    <div class="error-text" id="description-error"></div>
                 </div>
                 <div class="form-group">
                     <label for="tags">Tags:</label>
-                    <input type="text" id="tags" name="tags" placeholder="Include tags separated by commas...">
+                    <select id="tags" name="tags">
+                        <option value="">Select tags</option>
+                        <option value="Gentle">Gentle</option>
+                        <option value="Docile">Docile</option>
+                        <option value="Tame">Tame</option>
+                        <option value="Peaceful">Peaceful</option>
+                        <option value="Relaxed">Relaxed</option>
+                        <option value="Fierce">Fierce</option>
+                        <option value="Hostile">Hostile</option>
+                        <option value="Savage">Savage</option>
+                        <option value="Ferocious">Ferocious</option>
+                        <option value="Predatory">Predatory</option>
+                        <option value="Territorial">Territorial</option>
+                        <option value="Timid">Timid</option>
+                        <option value="Nervous">Nervous</option>
+                        <option value="Anxious">Anxious</option>
+                        <option value="Shy">Shy</option>
+                        <option value="Fearful">Fearful</option>
+                        <option value="Cautious">Cautious</option>
+                    </select>
+                    <div class="error-text" id="tags-error"></div>
                 </div>
                 <div class="form-group">
                     <label for="area">Area:</label>
@@ -101,6 +349,7 @@ if (!isset($_SESSION["user_id"])) {
                         <option value="hospital">Hospital</option>
                         <option value="other">Other</option>
                     </select>
+                    <div class="error-text" id="area-error"></div>
                 </div>
                 <div class="form-group">
                     <label for="country">Country:</label>
@@ -356,18 +605,22 @@ if (!isset($_SESSION["user_id"])) {
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
+                    <div class="error-text" id="country-error"></div>
                 </div>
                 <div class="form-group">
                     <label for="city">City:</label>
                     <input type="text" id="city" name="city" required placeholder="City">
+                    <div class="error-text" id="city-error"></div>
                 </div>
                 <div class="form-group">
                     <label for="address">Address:</label>
                     <input type="text" id="address" name="address" required placeholder="Street Address">
+                    <div class="error-text" id="address-error"></div>
                 </div>
                 <div class="form-group">
                     <label for="photos">Photos:</label>
                     <input type="file" id="photos" name="photos" accept="image/*" multiple>
+                    <div class="error-text" id="photos-error"></div>
                 </div>
                 <div class="form-group">
                     <label for="additional_info">Additional Information:</label>

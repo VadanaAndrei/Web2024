@@ -40,7 +40,7 @@
 
                     <script>
                         document.getElementById('profileLink').addEventListener('click', function() {
-                            fetch('../php-pages/check-login-status.php')
+                            fetch('../checks/check-login-status.php')
                                 .then(response => response.json())
                                 .then(data => {
                                     if (data.loggedIn) {

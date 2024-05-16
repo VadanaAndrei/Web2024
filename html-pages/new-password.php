@@ -19,6 +19,7 @@ if (isset($_GET['token'])) {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../js-pages/new-password.js" defer></script>
 </head>
 
 <body>
@@ -47,7 +48,7 @@ if (isset($_GET['token'])) {
 
                     <script>
                         document.getElementById('profileLink').addEventListener('click', function() {
-                            fetch('../php-pages/check-login-status.php')
+                            fetch('../checks/check-login-status.php')
                                 .then(response => response.json())
                                 .then(data => {
                                     if (data.loggedIn) {
@@ -69,7 +70,7 @@ if (isset($_GET['token'])) {
 
     <main>
         <div class="container-new-password">
-            <form action="NewPassword/processResetPassword" method="post">
+            <form action="NewPassword/processResetPassword" method="post" id="form">
             <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
 
                 <h2>Change password</h2><br><br>
@@ -77,11 +78,13 @@ if (isset($_GET['token'])) {
                     <label for="password">New Password:</label>
                     <input type="password" id="password" name="password" required
                         placeholder="Enter your new password...">
+                    <div class="error-text"></div>
                 </div>
                 <div class="form-group">
                     <label for="confirm-password">Confirm New Password:</label>
                     <input type="password" id="confirm-password" name="confirm-password" required
                         placeholder="Confirm your new password...">
+                    <div class="error-text"></div>
                 </div>
                 <button type="submit">Change password</button>
             </form>

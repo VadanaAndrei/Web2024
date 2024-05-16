@@ -1,18 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('form');
-    const oldPassword = document.getElementById('password');
-    const newPassword = document.getElementById('new-password');
+    const newPassword = document.getElementById('password');
     const confirmPassword = document.getElementById('confirm-password');
 
-    form.addEventListener('submit', async function (e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
-        const oldPasswordCorrect = await checkOldPassword(oldPassword.value.trim());
-        if (await validateInputs(oldPasswordCorrect)) {
+        if (validateInputs()) {
             form.submit();
         }
     });
 
-    [oldPassword, newPassword, confirmPassword].forEach(input => {
+    [newPassword, confirmPassword].forEach(input => {
         input.addEventListener('input', validateField);
         input.addEventListener('blur', validateField);
     });
@@ -39,21 +37,10 @@ document.addEventListener('DOMContentLoaded', function () {
         inputControl.classList.remove('error');
     };
 
-    const validateInputs = async (oldPasswordCorrect) => {
-        const oldPasswordValue = oldPassword.value.trim();
+    const validateInputs = () => {
         const newPasswordValue = newPassword.value.trim();
         const confirmPasswordValue = confirmPassword.value.trim();
         let isValid = true;
-
-        if (oldPasswordValue === '') {
-            setError(oldPassword, 'Old Password cannot be blank');
-            isValid = false;
-        } else if (oldPasswordCorrect === false) {
-            setError(oldPassword, 'Old Password is incorrect');
-            isValid = false;
-        } else {
-            setSuccess(oldPassword);
-        }
 
         if (newPasswordValue === '') {
             setError(newPassword, 'New Password cannot be blank');
@@ -82,27 +69,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         return isValid;
-    };
-
-    const checkOldPassword = async (password) => {
-        try {
-            const response = await fetch('../checks/check-old-password.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ password })
-            });
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            const data = await response.json();
-            return data.correct;
-        } catch (error) {
-            console.error('Error:', error);
-            return false;
-        }
     };
 });

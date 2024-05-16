@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const checkIfExists = async (type, value) => {
         try {
-            const response = await fetch('../php-pages/check-exists.php', {
+            const response = await fetch('../checks/check-exists.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

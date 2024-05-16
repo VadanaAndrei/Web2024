@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require __DIR__ . '/connect.php';
+require __DIR__ . '/../app/db/connect.php';
 
 $response = []; 
 

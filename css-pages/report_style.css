@@ -36,6 +36,23 @@ form {
     margin-bottom: 20px;
 }
 
+.error-text {
+    color: #e74c3c;
+    font-size: 12px;
+    height: 13px;
+}
+
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+    border-color: #e74c3c;
+}
+
+.form-group.error .error-text {
+    display: block;
+}
+
+
 label {
     display: block;
     margin-bottom: 5px;
