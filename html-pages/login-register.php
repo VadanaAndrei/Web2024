@@ -37,13 +37,13 @@ if (isset($_SESSION['error_message'])) {
     <header>
         <div class="background">
             <div class="navbar">
-                <a class="logo-link" href="../html-pages/index.html"><img src="../assets/logo_web.png" alt="FePA"
-                        class="navbar__logo"></a>
+                <a class="logo-link" href="home.php"><img src="../assets/logo_web.png" alt="FePA"
+                                                          class="navbar__logo"></a>
                 <ul class="navbar__buttons">
-                    <li><a class="navbar__home" href="../html-pages/index.html">Home</a></li>
-                    <li><a class="navbar__about" href="../html-pages/about.html">About</a></li>
+                    <li><a class="navbar__home" href="home.php">Home</a></li>
+                    <li><a class="navbar__about" href="about.php">About</a></li>
                     <li><a class="navbar__contact" href="#contact-id">Contact</a></li>
-                    <li><a class="navbar__help" href="../html-pages/help.html">Help</a></li>
+                    <li><a class="navbar__help" href="help.php">Help</a></li>
                     <li>
                         <div class="search">
                             <span class="search__icon material-symbols-outlined">search</span>
@@ -96,7 +96,7 @@ if (isset($_SESSION['error_message'])) {
                         <p class="error-text"><?php echo htmlspecialchars($error_message); ?></p>
                     <?php endif; ?>
                     <button type="submit">Login</button>
-                    <button type="button" onclick="window.location.href='../html-pages/forgot-password.html';">Forgot password</button>
+                    <button type="button" onclick="window.location.href='forgot-password.php';">Forgot password</button>
                 </form>
             </div>
             <div class="container-register">
