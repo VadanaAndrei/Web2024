@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('report-form');
     const species = document.getElementById('species');
     const description = document.getElementById('description');
-    const tags = document.getElementById('tags');
+    const tag = document.getElementById('tag');
     const area = document.getElementById('area');
     const country = document.getElementById('country');
     const city = document.getElementById('city');
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-        const inputs = [species, description, tags, area, country, city, address, photos];
+        const inputs = [species, description, tag, area, country, city, address, photos];
 
         inputs.forEach(input => {
             validateField({ target: input });
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    [species, description, tags, area, country, city, address, photos].forEach(input => {
+    [species, description, tag, area, country, city, address, photos].forEach(input => {
         input.addEventListener('input', validateField);
         input.addEventListener('blur', validateField);
     });
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const validateInputs = () => {
         const speciesValue = species.value.trim();
         const descriptionValue = description.value.trim();
-        const tagsValue = tags.value.trim();
+        const tagValue = tag.value.trim();
         const areaValue = area.value.trim();
         const countryValue = country.value.trim();
         const cityValue = city.value.trim();
@@ -80,11 +80,11 @@ document.addEventListener('DOMContentLoaded', function () {
             setSuccess(description, description.parentElement.querySelector('.error-text'));
         }
 
-        if (tagsValue === '') {
-            setError(tags, tags.parentElement.querySelector('.error-text'), 'Please select a tag.');
+        if (tagValue === '') {
+            setError(tag, tag.parentElement.querySelector('.error-text'), 'Please select a tag.');
             isValid = false;
         } else {
-            setSuccess(tags, tags.parentElement.querySelector('.error-text'));
+            setSuccess(tag, tag.parentElement.querySelector('.error-text'));
         }
 
         if (areaValue === '') {

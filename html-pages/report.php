@@ -26,58 +26,57 @@ if (!isset($_SESSION["user_id"])) {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="../js-pages/report.js" defe></script>
+    <script src="../js-pages/report.js" defer></script>
 </head>
 
 <body>
-<header>
-    <div class="background">
-        <div class="navbar">
-            <a class="logo-link" href="Home"><img src="../assets/logo_web.png" alt="FePA"
-                                                  class="navbar__logo"></a>
-            <ul class="navbar__buttons">
-                <li><a class="navbar__home" href="Home">Home</a></li>
-                <li><a class="navbar__about" href="About">About</a></li>
-                <li><a class="navbar__contact" href="#contact-id">Contact</a></li>
-                <li><a class="navbar__help" href="Help">Help</a></li>
-                <li>
-                    <div class="search">
-                        <span class="search__icon material-symbols-outlined">search</span>
-                        <input class="search__input" type="search" placeholder="Search">
-                    </div>
-                </li>
-                <li>
-                    <a class="profile" href="#" id="profileLink">
-              <span class="material-symbols-outlined">
-                person
-              </span>
-                    </a>
+    <header>
+        <div class="background">
+            <div class="navbar">
+                <a class="logo-link" href="Home"><img src="../assets/logo_web.png" alt="FePA" class="navbar__logo"></a>
+                <ul class="navbar__buttons">
+                    <li><a class="navbar__home" href="Home">Home</a></li>
+                    <li><a class="navbar__about" href="About">About</a></li>
+                    <li><a class="navbar__contact" href="#contact-id">Contact</a></li>
+                    <li><a class="navbar__help" href="Help">Help</a></li>
+                    <li>
+                        <div class="search">
+                            <span class="search__icon material-symbols-outlined">search</span>
+                            <input class="search__input" type="search" placeholder="Search">
+                        </div>
+                    </li>
+                    <li>
+                        <a class="profile" href="#" id="profileLink">
+                            <span class="material-symbols-outlined">
+                                person
+                            </span>
+                        </a>
 
-                    <script>
-                        document.getElementById('profileLink').addEventListener('click', function() {
-                            fetch('../checks/check-login-status.php')
-                                .then(response => response.json())
-                                .then(data => {
-                                    if (data.loggedIn) {
-                                        window.location.href = 'Profile';
-                                    } else {
-                                        window.location.href = 'LoginRegister';
-                                    }
-                                })
-                                .catch(error => console.error('Error:', error));
-                        });
-                    </script>
+                        <script>
+                            document.getElementById('profileLink').addEventListener('click', function () {
+                                fetch('../checks/check-login-status.php')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.loggedIn) {
+                                            window.location.href = 'Profile';
+                                        } else {
+                                            window.location.href = 'LoginRegister';
+                                        }
+                                    })
+                                    .catch(error => console.error('Error:', error));
+                            });
+                        </script>
 
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-</header>
+    </header>
 
     <main>
         <div class="container_report">
-            <form action="/submit" method="post" id="report-form" enctype="multipart/form-data">
+            <form action="Report/submitReport" method="POST" id="report-form" enctype="multipart/form-data">
                 <h2>Report a sighting</h2><br><br>
                 <div class="form-group">
                     <label for="species">Species:</label>
@@ -92,7 +91,6 @@ if (!isset($_SESSION["user_id"])) {
                         <option value="Antelope">Antelope</option>
                         <option value="Ape">Ape</option>
                         <option value="Armadillo">Armadillo</option>
-                        <option value="Donkey">Donkey</option>
                         <option value="Baboon">Baboon</option>
                         <option value="Badger">Badger</option>
                         <option value="Barracuda">Barracuda</option>
@@ -133,6 +131,7 @@ if (!isset($_SESSION["user_id"])) {
                         <option value="Dog">Dog</option>
                         <option value="Dogfish">Dogfish</option>
                         <option value="Dolphin">Dolphin</option>
+                        <option value="Donkey">Donkey</option>
                         <option value="Dotterel">Dotterel</option>
                         <option value="Dove">Dove</option>
                         <option value="Dragonfly">Dragonfly</option>
@@ -316,9 +315,9 @@ if (!isset($_SESSION["user_id"])) {
                     <div class="error-text" id="description-error"></div>
                 </div>
                 <div class="form-group">
-                    <label for="tags">Tags:</label>
-                    <select id="tags" name="tags">
-                        <option value="">Select tags</option>
+                    <label for="tag">Tag:</label>
+                    <select id="tag" name="tag">
+                        <option value="">Select a tag</option>
                         <option value="Gentle">Gentle</option>
                         <option value="Docile">Docile</option>
                         <option value="Tame">Tame</option>
@@ -337,8 +336,9 @@ if (!isset($_SESSION["user_id"])) {
                         <option value="Fearful">Fearful</option>
                         <option value="Cautious">Cautious</option>
                     </select>
-                    <div class="error-text" id="tags-error"></div>
+                    <div class="error-text" id="tag-error"></div>
                 </div>
+
                 <div class="form-group">
                     <label for="area">Area:</label>
                     <select id="area" name="area" required>
@@ -619,7 +619,7 @@ if (!isset($_SESSION["user_id"])) {
                 </div>
                 <div class="form-group">
                     <label for="photos">Photos:</label>
-                    <input type="file" id="photos" name="photos" accept="image/*" multiple>
+                    <input type="file" id="photos" name="photos[]" accept="image/*" multiple>
                     <div class="error-text" id="photos-error"></div>
                 </div>
                 <div class="form-group">
