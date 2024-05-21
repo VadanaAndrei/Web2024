@@ -65,11 +65,11 @@ class Report extends Controller {
                     }
                 }
 
-                $_SESSION['success_message'] = "Raportul a fost trimis cu succes!";
+                $_SESSION['success_message'] = "Report has been successfully submitted.";
                 header("Location: ../Home");
                 exit;
             } else {
-                $_SESSION['error_message'] = "Eroare la trimiterea raportului: " . $stmt->error;
+                $_SESSION['error_message'] = "Error at submitting the report" . $stmt->error;
                 header("Location: ../Report");
                 exit;
             }

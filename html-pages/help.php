@@ -32,6 +32,11 @@
                     </div>
                 </li>
                 <li>
+                    <a class="rss_feed" href="RSS" target="_blank">
+                        <span class="material-symbols-outlined">rss_feed</span>
+                    </a>
+                </li>
+                <li>
                     <a class="profile" href="#" id="profileLink">
               <span class="material-symbols-outlined">
                 person

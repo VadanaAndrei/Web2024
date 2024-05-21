@@ -46,6 +46,11 @@ if (!isset($_SESSION["user_id"])) {
                         </div>
                     </li>
                     <li>
+                        <a class="rss_feed" href="RSS" target="_blank">
+                            <span class="material-symbols-outlined">rss_feed</span>
+                        </a>
+                    </li>
+                    <li>
                         <a class="profile" href="#" id="profileLink">
                             <span class="material-symbols-outlined">
                                 person
@@ -343,11 +348,11 @@ if (!isset($_SESSION["user_id"])) {
                     <label for="area">Area:</label>
                     <select id="area" name="area" required>
                         <option value="">Select area</option>
-                        <option value="park">Park</option>
-                        <option value="kindergarten">Kindergarten</option>
-                        <option value="school">School</option>
-                        <option value="hospital">Hospital</option>
-                        <option value="other">Other</option>
+                        <option value="Park">Park</option>
+                        <option value="Kindergarten">Kindergarten</option>
+                        <option value="School">School</option>
+                        <option value="Hospital">Hospital</option>
+                        <option value="Other">Other</option>
                     </select>
                     <div class="error-text" id="area-error"></div>
                 </div>
