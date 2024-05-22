@@ -1,6 +1,7 @@
 <?php
+global $mysqli;
 session_start();
-require_once '/../app/db/connect.php';
+require __DIR__ . "/../app/db/connect.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $input = json_decode(file_get_contents('php://input'), true);

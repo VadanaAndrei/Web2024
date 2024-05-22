@@ -57,12 +57,16 @@ if (!isset($_SESSION["user_id"])) {
                     </a>
 
                     <script>
-                        document.getElementById('profileLink').addEventListener('click', function() {
+                        document.getElementById('profileLink').addEventListener('click', function () {
                             fetch('../checks/check-login-status.php')
                                 .then(response => response.json())
                                 .then(data => {
                                     if (data.loggedIn) {
-                                        window.location.href = 'Profile';
+                                        if (data.user_type === 'admin') {
+                                            window.location.href = 'AdminProfile';
+                                        } else {
+                                            window.location.href = 'Profile';
+                                        }
                                     } else {
                                         window.location.href = 'LoginRegister';
                                     }

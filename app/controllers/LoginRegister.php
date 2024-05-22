@@ -70,7 +70,7 @@ class LoginRegister extends Controller{
         }
     }
 
-    public function authenticate() {
+    public function authenticateUser() {
         session_start();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -86,6 +86,7 @@ class LoginRegister extends Controller{
             if ($user && password_verify($_POST["password"], $user["password"])) {
                 session_regenerate_id();
                 $_SESSION["user_id"] = $user["user_id"];
+                $_SESSION["user_type"] = 'user';
                 header("Location: ../Profile");
                 exit;
             } else {
@@ -96,10 +97,37 @@ class LoginRegister extends Controller{
         }
     }
 
+
     public function logout() {
         session_start();
         session_destroy();
         header("Location: ../LoginRegister");
         exit;
+    }
+
+    public function authenticateAdmin() {
+        session_start();
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $mysqli = require __DIR__ . "/../db/connect.php";
+
+            $stmt = $mysqli->prepare("SELECT * FROM admin WHERE username = ?");
+            $stmt->bind_param("s", $_POST["username-admin"]);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            $admin = $result->fetch_assoc();
+
+            if ($admin && password_verify($_POST["password-admin"], $admin["password"])) {
+                session_regenerate_id();
+                $_SESSION["user_id"] = $admin["admin_id"];
+                $_SESSION["user_type"] = 'admin';
+                header("Location: ../AdminProfile");
+                exit;
+            } else {
+                header("Location: ../LoginRegister");
+                exit;
+            }
+        }
     }
 }
