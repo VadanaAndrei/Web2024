@@ -9,6 +9,7 @@
     <file url="file://$PROJECT_DIR$/app/controllers/NewPassword.php" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/app/controllers/RSS.php" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/app/controllers/Report.php" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/app/controllers/SearchResults.php" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/checks/get-db-info.php" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/html-pages/home.php" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/html-pages/rss.php" dialect="GenericSQL" />

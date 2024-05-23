@@ -12,6 +12,7 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../checks/check-if-admin.js" defer></script>
 </head>
 
 <body>
@@ -24,10 +25,10 @@
             <li><a class="navbar__contact" href="#contact-id">Contact</a></li>
             <li><a class="navbar__help" href="Help">Help</a></li>
             <li>
-                <div class="search">
+                <form class="search" action="SearchResults" method="get">
                     <span class="search__icon material-symbols-outlined">search</span>
-                    <input class="search__input" type="search" placeholder="Search">
-                </div>
+                    <input class="search__input" type="search" name="query" placeholder="Search">
+                </form>
             </li>
             <li>
                 <a class="rss_feed" href="RSS" target="_blank">
@@ -72,7 +73,7 @@
         <div class="top-section">
             <div class="report">
                 <img src="../assets/report.png" alt="Report" class="report__image">
-                <button type="button" class="report__button" onclick="window.location.href='Report';">Report</button>
+                <button type="button" class="report__button" id="report_button">Report</button>
                 <div class="pop-up">Click the 'Report' Button if you encounter a stray animal, or an animal that has escaped
                     from
                     the shelter. Complete the Report Form by entering details about the animal and the sighting location. If

@@ -628,7 +628,7 @@ if (!isset($_SESSION["user_id"])) {
                 </div>
                 <div class="form-group">
                     <label for="photos">Photos:</label>
-                    <input type="file" id="photos" name="photos[]" accept="image/*" multiple>
+                    <input type="file" id="photos" name="photos[]" accept="image/*" >
                     <div class="error-text" id="photos-error"></div>
                 </div>
                 <div class="form-group">
