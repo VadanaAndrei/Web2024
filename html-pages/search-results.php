@@ -16,56 +16,54 @@
 
 <body>
 <header>
-    <div class="background">
-        <div class="navbar">
-            <a class="logo-link" href="Home"><img src="../assets/logo_web.png" alt="FePA"
-                                                  class="navbar__logo"></a>
-            <ul class="navbar__buttons">
-                <li><a class="navbar__home" href="Home">Home</a></li>
-                <li><a class="navbar__about" href="About">About</a></li>
-                <li><a class="navbar__contact" href="#contact-id">Contact</a></li>
-                <li><a class="navbar__help" href="Help">Help</a></li>
-                <li>
-                    <div class="search">
-                        <span class="search__icon material-symbols-outlined">search</span>
-                        <input class="search__input" type="search" placeholder="Search">
-                    </div>
-                </li>
-                <li>
-                    <a class="rss_feed" href="RSS" target="_blank">
-                        <span class="material-symbols-outlined">rss_feed</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="profile" href="#" id="profileLink">
-              <span class="material-symbols-outlined">
-                person
-              </span>
-                    </a>
+    <div class="navbar">
+        <a class="logo-link" href="Home"><img src="../assets/logo_web.png" alt="FePA" class="navbar__logo"></a>
+        <ul class="navbar__buttons">
+            <li><a class="navbar__home" href="Home">Home</a></li>
+            <li><a class="navbar__about" href="About">About</a></li>
+            <li><a class="navbar__contact" href="#contact-id">Contact</a></li>
+            <li><a class="navbar__help" href="Help">Help</a></li>
+            <li>
+                <form class="search" action="SearchResults" method="get">
+                    <span class="search__icon material-symbols-outlined">search</span>
+                    <input class="search__input" type="search" name="query" placeholder="Search">
+                </form>
+            </li>
+            <li>
+                <a class="rss_feed" href="RSS" target="_blank">
+                    <span class="material-symbols-outlined">rss_feed</span>
+                </a>
+            </li>
+            <li>
+                <a class="profile" href="#" id="profileLink">
+            <span class="material-symbols-outlined">
+              person
+            </span>
+                </a>
 
-                    <script>
-                        document.getElementById('profileLink').addEventListener('click', function () {
-                            fetch('../checks/check-login-status.php')
-                                .then(response => response.json())
-                                .then(data => {
-                                    if (data.loggedIn) {
-                                        if (data.user_type === 'admin') {
-                                            window.location.href = 'AdminProfile';
-                                        } else {
-                                            window.location.href = 'Profile';
-                                        }
+                <script>
+                    document.getElementById('profileLink').addEventListener('click', function () {
+                        fetch('../checks/check-login-status.php')
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.loggedIn) {
+                                    if (data.user_type === 'admin') {
+                                        window.location.href = 'AdminProfile';
                                     } else {
-                                        window.location.href = 'LoginRegister';
+                                        window.location.href = 'Profile';
                                     }
-                                })
-                                .catch(error => console.error('Error:', error));
-                        });
-                    </script>
+                                } else {
+                                    window.location.href = 'LoginRegister';
+                                }
+                            })
+                            .catch(error => console.error('Error:', error));
+                    });
+                </script>
 
-                </li>
-            </ul>
-        </div>
+            </li>
+        </ul>
     </div>
+    <div class="background"></div>
 
 </header>
 
@@ -73,34 +71,36 @@
     <h1>Search Results</h1>
 
     <?php if (!empty($results)): ?>
-        <ul>
+        <div class="latest-reports">
             <?php foreach ($results as $report): ?>
-                <li>
-                    <h2><?php echo htmlspecialchars($report['species']); ?></h2>
-                    <p>Area: <?php echo htmlspecialchars($report['area']); ?></p>
-                    <p>Country: <?php echo htmlspecialchars($report['country']); ?></p>
-                    <p>City: <?php echo htmlspecialchars($report['city']); ?></p>
-                    <p>Address: <?php echo htmlspecialchars($report['address']); ?></p>
-                    <p>Description: <?php echo htmlspecialchars($report['description']); ?></p>
-                    <p>Submitted at: <?php echo htmlspecialchars($report['submitted_at']); ?></p>
-                    <p>Tags: <?php echo htmlspecialchars($report['tags']); ?></p>
-                    <p>Photos:
+                <div class="latest-report-item">
+                    <div class="report-info">
+                        <h3><?php echo htmlspecialchars($report['species']); ?></h3>
+                        <p>Area: <?php echo htmlspecialchars($report['area']); ?></p>
+                        <p>Country: <?php echo htmlspecialchars($report['country']); ?></p>
+                        <p>City: <?php echo htmlspecialchars($report['city']); ?></p>
+                        <p>Address: <?php echo htmlspecialchars($report['address']); ?></p>
+                        <p>Description: <?php echo htmlspecialchars($report['description']); ?></p>
+                        <p>Submitted at: <?php echo htmlspecialchars($report['submitted_at']); ?></p>
+                        <p>Tags: <?php echo htmlspecialchars($report['tags']); ?></p>
+                    </div>
+                    <div class="photos">
                         <?php
                         $photos = explode(', ', $report['photos']);
                         foreach ($photos as $photo) {
                             echo '<img src="..' . htmlspecialchars($photo) . '" alt="Report Photo">';
                         }
                         ?>
-                    </p>
-                </li>
+                    </div>
+                </div>
             <?php endforeach; ?>
-        </ul>
+        </div>
     <?php else: ?>
+    <div class="no_results">
         <p>No results found for your search.</p>
+    </div>
     <?php endif; ?>
 </main>
-
-
 
 <footer class="footer">
     <div class="container">
@@ -129,5 +129,4 @@
 </footer>
 
 </body>
-
 </html>
