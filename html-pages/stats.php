@@ -67,59 +67,60 @@
 
 </header>
 
-    <main>
-        <div class="container_stats">
-            <div class="text-box">
-                <h1>Statistics</h1>
+<main>
+    <div class="container_stats">
+        <div class="text-box">
+            <h1>Statistics</h1>
+            <br> <br>
+            <p>Users can report observations of stray animals directly through our user-friendly interface. These
+                reports are then processed to create a comprehensive picture of the community's situation and are
+                presented in daily reports, with details on the animals' status (adopted, trained, euthanized),
+                their level of danger, and species.
                 <br> <br>
-                <p>Users can report observations of stray animals directly through our user-friendly interface. These
-                    reports are then processed to create a comprehensive picture of the community's situation and are
-                    presented in daily reports, with details on the animals' status (adopted, trained, euthanized),
-                    their level of danger, and species.
-                    <br> <br>
-                    Whether it's about stray dogs needing a home or animals that may
-                    pose a risk to residents, our platform ensures that each case is monitored and reported
-                    appropriately. Each generated report is available in multiple formats - visually in HTML for easy
-                    online access and in PDF format for archiving
-                    and printed distribution. This flexibility in presenting data allows users to extract information in
-                    the most efficient way for their needs.
-                </p>
-            </div>
-            <section id="statistics">
-                <h2>Select filters for statistics</h2>
-                <br>
-                <form id="filter-form">
-                    <div class="form-group">
-                        <label for="city-select">City:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <select id="city-select" name="city">
-                            <option value="">Select a city</option>
-                            <option value="Bucharest">Bucharest</option>
-                            <option value="Cluj-Napoca">Cluj-Napoca</option>
-                            <option value="Timisoara">Timisoara</option>
-                            <option value="Iasi">Iasi</option>
-                            <option value="Constanta">Constanta</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="day-input">Day:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <input type="date" id="day-input" name="day">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="animal-select">Animal:</label>
-                        <select id="animal-select" name="animal">
-                            <option value="">Select an animal</option>
-                            <option value="dog">Dog</option>
-                            <option value="cat">Cat</option>
-                        </select>
-                    </div>
-                    <button type="submit">Generate CSV</button>
-                    <button type="submit">Generate HTML</button>
-                </form>
-            </section>
+                Whether it's about stray dogs needing a home or animals that may
+                pose a risk to residents, our platform ensures that each case is monitored and reported
+                appropriately. Each generated report is available in multiple formats - visually in HTML for easy
+                online access and in PDF format for archiving
+                and printed distribution. This flexibility in presenting data allows users to extract information in
+                the most efficient way for their needs.
+            </p>
         </div>
-    </main>
+        <section id="statistics">
+            <h2>Select filters for statistics</h2>
+            <br>
+            <form id="filter-form">
+                <div class="form-group">
+                    <label for="city-select">City:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <select id="city-select" name="city">
+                        <option value="">Select a city</option>
+                        <option value="">Any city</option>
+                        <?php foreach ($data['cities'] as $city): ?>
+                            <option value="<?= htmlspecialchars($city) ?>"><?= htmlspecialchars($city) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="day-input">Day:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="date" id="day-input" name="day">
+                </div>
+
+                <div class="form-group">
+                    <label for="animal-select">Species:</label>
+                    <select id="animal-select" name="animal">
+                        <option value="">Select a species</option>
+                        <option value="">Any species</option>
+                        <?php foreach ($data['species'] as $species): ?>
+                            <option value="<?= htmlspecialchars($species) ?>"><?= htmlspecialchars($species) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <button type="submit">Generate CSV</button>
+                <button type="submit">Generate HTML</button>
+            </form>
+        </section>
+    </div>
+</main>
 
     <footer class="footer">
         <div class="container">
