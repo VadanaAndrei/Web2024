@@ -27,7 +27,7 @@ class SearchResults extends Controller {
             die("SQL error: " . $mysqli->error);
         }
 
-        $searchTerm = '([[:<:]]' . $query . '[[:>:]])';
+        $searchTerm = '\\b' . $query . '\\b';
         $stmt->bind_param('s', $searchTerm);
 
         $stmt->execute();

@@ -82,7 +82,7 @@
                         <p>Address: <?php echo htmlspecialchars($report['address']); ?></p>
                         <p>Description: <?php echo htmlspecialchars($report['description']); ?></p>
                         <p>Submitted at: <?php echo htmlspecialchars($report['submitted_at']); ?></p>
-                        <p>Tags: <?php echo htmlspecialchars($report['tags']); ?></p>
+                        <p>Tag: <?php echo htmlspecialchars($report['tags']); ?></p>
                     </div>
                     <div class="photos">
                         <?php
