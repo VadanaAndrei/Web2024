@@ -12,8 +12,7 @@ echo '<description>Latest animal reports from FePA</description>';
 
 $sql = "SELECT r.report_id, r.species, r.area, r.country, r.city, r.address, r.description, r.submitted_at
         FROM reports r
-        ORDER BY r.submitted_at DESC
-        LIMIT 10";
+        ORDER BY r.submitted_at DESC";
 
 $result = $mysqli->query($sql);
 

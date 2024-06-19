@@ -128,6 +128,7 @@
                     <button type="submit" name="generate" value="html-pie-chart">Generate HTML Pie Chart</button>
                     <button type="submit" name="generate" value="html-stacked-bar">Generate HTML Stacked Bar Chart</button>
                     <button type="submit" name="generate" value="html-bar-chart">Generate HTML Bar Chart</button>
+                    <button type="submit" name="generate" value="pdf">Generate PDF</button>
                 </form>
 
             </section>

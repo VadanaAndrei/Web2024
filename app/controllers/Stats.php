@@ -1,5 +1,10 @@
 <?php
 
+require __DIR__ . '/../../vendor/autoload.php';
+
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 class Stats extends Controller {
     public function index() {
         $cities = $this->getCities();
@@ -307,16 +312,17 @@ class Stats extends Controller {
 
             $htmlContent = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Species Statistic</title>";
             $htmlContent .= "<style>
-        body { font-family: Arial, sans-serif; }
-        .chart-container { display: flex; flex-direction: column; align-items: flex-start; width: 100%; }
-        .bar { display: flex; align-items: center; margin-bottom: 10px; width: 100%; }
-        .bar-label { flex-shrink: 0; width: 17%; padding-right: 10px; overflow: hidden; text-overflow: ellipsis; white-space: normal; word-break: break-word; }
-        .bar-stack { display: flex; width: 85%; }
-        .bar-segment { height: 30px; }
-        .legend { display: flex; margin-top: 20px; flex-wrap: wrap; }
-        .legend-item { display: flex; align-items: center; margin-right: 20px; }
-        .legend-color { width: 20px; height: 20px; margin-right: 5px; }
-        </style>";
+    body { font-family: Arial, sans-serif; }
+    .chart-container { display: flex; flex-direction: column; align-items: flex-start; width: 100%; }
+    .bar { display: flex; align-items: center; margin-bottom: 10px; width: 100%; }
+    .bar-label { flex-shrink: 0; width: 17%; padding-right: 10px; overflow: hidden; text-overflow: ellipsis; white-space: normal; word-break: break-word; }
+    .bar-stack { display: flex; width: 85%; }
+    .bar-segment { height: 30px; position: relative; }
+    .bar-segment span { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #fff; font-weight: bold; }
+    .legend { display: flex; margin-top: 20px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; margin-right: 20px; }
+    .legend-color { width: 20px; height: 20px; margin-right: 5px; }
+</style>";
             $htmlContent .= "</head><body>";
             $htmlContent .= "<h1>City Species Report</h1>";
             $htmlContent .= "<div class='chart-container'>";
@@ -332,7 +338,9 @@ class Stats extends Controller {
                         $colors[$species] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
                     }
                     $percentage = ($count / $totalCityReports) * 100;
-                    $htmlContent .= "<div class='bar-segment' style='width: {$percentage}%; background-color: {$colors[$species]};' title='{$species}: {$count} ({$percentage}%)'></div>";
+                    $htmlContent .= "<div class='bar-segment' style='width: {$percentage}%; background-color: {$colors[$species]};' title='{$species}: {$count} ({$percentage}%)'>";
+                    $htmlContent .= "<span>{$percentage}%</span>";
+                    $htmlContent .= "</div>";
                 }
                 $htmlContent .= "</div>";
                 $htmlContent .= "</div>";
@@ -430,6 +438,152 @@ class Stats extends Controller {
 
             header('Content-Type: text/html');
             header('Content-Disposition: attachment;filename="' . $filename . '"');
+            readfile($filename);
+
+            unlink($filename);
+            exit();
+        }
+
+        else if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['generate']) && $_POST['generate'] == 'pdf') {
+            $city = $_POST['city'] ?? '';
+            $start_date = $_POST['start_date'] ?? '';
+            $end_date = $_POST['end_date'] ?? '';
+            $species = $_POST['animal'] ?? '';
+
+            $query = "SELECT 
+                r.city, 
+                r.species, 
+                r.area,
+                r.country,
+                COUNT(r.report_id) AS count
+                FROM reports r
+                WHERE 1=1";
+
+            if ($city !== '') {
+                $query .= " AND r.city = '" . $mysqli->real_escape_string($city) . "'";
+            }
+
+            if ($species !== '') {
+                $query .= " AND r.species = '" . $mysqli->real_escape_string($species) . "'";
+            }
+
+            if ($start_date !== '') {
+                $query .= " AND r.submitted_at >= '" . $mysqli->real_escape_string($start_date) . " 00:00:00'";
+            }
+
+            if ($end_date !== '') {
+                $query .= " AND r.submitted_at <= '" . $mysqli->real_escape_string($end_date) . " 23:59:59'";
+            }
+
+            $query .= " GROUP BY r.city, r.species, r.area, r.country
+                ORDER BY r.city, r.species";
+
+            $result = $mysqli->query($query);
+
+            if (!$result) {
+                die("Query error: " . $mysqli->error);
+            }
+
+            $cityData = [];
+            $speciesData = [];
+            $areaData = [];
+            $countryData = [];
+
+            while ($row = $result->fetch_assoc()) {
+                $city = $row['city'];
+                $species = $row['species'];
+                $area = $row['area'];
+                $country = $row['country'];
+                $count = $row['count'];
+
+                if (!isset($cityData[$city])) {
+                    $cityData[$city] = [];
+                }
+                if (!isset($cityData[$city][$species])) {
+                    $cityData[$city][$species] = [];
+                }
+                $cityData[$city][$species][] = $count;
+
+                if (!isset($speciesData[$species])) {
+                    $speciesData[$species] = 0;
+                }
+                $speciesData[$species] += $count;
+
+                if (!isset($areaData[$area])) {
+                    $areaData[$area] = 0;
+                }
+                $areaData[$area] += $count;
+
+                if (!isset($countryData[$country])) {
+                    $countryData[$country] = 0;
+                }
+                $countryData[$country] += $count;
+            }
+
+            $totalReports = array_sum($speciesData);
+
+            $htmlContent = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Species Statistic</title>";
+            $htmlContent .= "<style>
+                body { font-family: Arial, sans-serif; }
+                .container { width: 100%; margin: 0 auto; padding: 20px; }
+                h1, h2, h3 { text-align: center; }
+                p { text-align: justify; }
+                .statistics { margin-top: 20px; }
+                .statistics h2 { margin-top: 40px; }
+                .statistics ul { list-style: none; padding: 0; }
+                .statistics li { margin-bottom: 10px; }
+            </style>";
+            $htmlContent .= "</head><body>";
+            $htmlContent .= "<div class='container'>";
+            $htmlContent .= "<h1>City Species Report</h1>";
+            $htmlContent .= "<p>This report provides an overview of the species reported in various cities, the areas they were found, and the distribution across different countries. The data has been collected and compiled to help understand the patterns and frequency of species sightings, which can be used for further research and analysis.</p>";
+            $htmlContent .= "<div class='statistics'>";
+
+            $htmlContent .= "<h2>Total Reports</h2>";
+            $htmlContent .= "<p>The total number of reports submitted is: <strong>$totalReports</strong>.</p>";
+
+            $htmlContent .= "<h2>Distribution by Species</h2>";
+            $htmlContent .= "<ul>";
+            foreach ($speciesData as $species => $count) {
+                $percentage = ($count / $totalReports) * 100;
+                $htmlContent .= "<li><strong>" . htmlspecialchars($species) . ":</strong> " . $count . " reports (" . number_format($percentage, 2) . "%)</li>";
+            }
+            $htmlContent .= "</ul>";
+
+            $htmlContent .= "<h2>Distribution by Area</h2>";
+            $htmlContent .= "<ul>";
+            foreach ($areaData as $area => $count) {
+                $percentage = ($count / $totalReports) * 100;
+                $htmlContent .= "<li><strong>" . htmlspecialchars($area) . ":</strong> " . $count . " reports (" . number_format($percentage, 2) . "%)</li>";
+            }
+            $htmlContent .= "</ul>";
+
+            $htmlContent .= "<h2>Distribution by Country</h2>";
+            $htmlContent .= "<ul>";
+            foreach ($countryData as $country => $count) {
+                $percentage = ($count / $totalReports) * 100;
+                $htmlContent .= "<li><strong>" . htmlspecialchars($country) . ":</strong> " . $count . " reports (" . number_format($percentage, 2) . "%)</li>";
+            }
+            $htmlContent .= "</ul>";
+
+            $htmlContent .= "</div>"; // end statistics
+            $htmlContent .= "</div>"; // end container
+            $htmlContent .= "</body></html>";
+
+            $options = new Options();
+            $options->set('isHtml5ParserEnabled', true);
+            $options->set('isRemoteEnabled', true); // Permite încărcarea resurselor externe
+            $dompdf = new Dompdf($options);
+            $dompdf->loadHtml($htmlContent);
+            $dompdf->setPaper('A4', 'portrait');
+            $dompdf->render();
+
+            $pdfOutput = $dompdf->output();
+            $filename = "species_report_" . date('Ymd') . ".pdf";
+            file_put_contents($filename, $pdfOutput);
+
+            header('Content-Type: application/pdf');
+            header('Content-Disposition: attachment; filename="' . $filename . '"');
             readfile($filename);
 
             unlink($filename);

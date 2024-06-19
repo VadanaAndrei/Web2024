@@ -16,8 +16,7 @@ class Home extends Controller{
         LEFT JOIN tags t ON r.report_id = t.report_id
         LEFT JOIN photos p ON r.report_id = p.report_id
         GROUP BY r.report_id
-        ORDER BY r.submitted_at DESC
-        LIMIT 5";
+        ORDER BY r.submitted_at DESC";
 
         $result = $mysqli->query($sql);
 
