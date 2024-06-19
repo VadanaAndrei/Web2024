@@ -15,57 +15,56 @@
 </head>
 
 <body>
-    <header>
-        <div class="navbar">
-            <a class="logo-link" href="Home"><img src="../assets/logo_web.png" alt="FePA" class="navbar__logo"></a>
-            <ul class="navbar__buttons">
-                <li><a class="navbar__home" href="Home">Home</a></li>
-                <li><a class="navbar__about" href="About">About</a></li>
-                <li><a class="navbar__contact" href="#contact-id">Contact</a></li>
-                <li><a class="navbar__help" href="Help">Help</a></li>
-                <li>
-                    <form class="search" action="SearchResults" method="get">
-                        <span class="search__icon material-symbols-outlined">search</span>
-                        <input class="search__input" type="search" name="query" placeholder="Search">
-                    </form>
-                </li>
-                <li>
-                    <a class="rss_feed" href="RSS" target="_blank">
-                        <span class="material-symbols-outlined">rss_feed</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="profile" href="#" id="profileLink">
-                        <span class="material-symbols-outlined">
-                            person
-                        </span>
-                    </a>
+<header>
+    <div class="navbar">
+        <a class="logo-link" href="Home"><img src="../assets/logo_web.png" alt="FePA" class="navbar__logo"></a>
+        <ul class="navbar__buttons">
+            <li><a class="navbar__home" href="Home">Home</a></li>
+            <li><a class="navbar__about" href="About">About</a></li>
+            <li><a class="navbar__contact" href="#contact-id">Contact</a></li>
+            <li><a class="navbar__help" href="Help">Help</a></li>
+            <li>
+                <form class="search" action="SearchResults" method="get">
+                    <span class="search__icon material-symbols-outlined">search</span>
+                    <input class="search__input" type="search" name="query" placeholder="Search by species">
+                </form>
+            </li>
+            <li>
+                <a class="rss_feed" href="RSS" target="_blank">
+                    <span class="material-symbols-outlined">rss_feed</span>
+                </a>
+            </li>
+            <li>
+                <a class="profile" href="#" id="profileLink">
+            <span class="material-symbols-outlined">
+              person
+            </span>
+                </a>
 
-                    <script>
-                        document.getElementById('profileLink').addEventListener('click', function () {
-                            fetch('../checks/check-login-status.php')
-                                .then(response => response.json())
-                                .then(data => {
-                                    if (data.loggedIn) {
-                                        if (data.user_type === 'admin') {
-                                            window.location.href = 'AdminProfile';
-                                        } else {
-                                            window.location.href = 'Profile';
-                                        }
+                <script>
+                    document.getElementById('profileLink').addEventListener('click', function () {
+                        fetch('../checks/check-login-status.php')
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.loggedIn) {
+                                    if (data.user_type === 'admin') {
+                                        window.location.href = 'AdminProfile';
                                     } else {
-                                        window.location.href = 'LoginRegister';
+                                        window.location.href = 'Profile';
                                     }
-                                })
-                                .catch(error => console.error('Error:', error));
-                        });
-                    </script>
+                                } else {
+                                    window.location.href = 'LoginRegister';
+                                }
+                            })
+                            .catch(error => console.error('Error:', error));
+                    });
+                </script>
 
-                </li>
-            </ul>
-        </div>
-        <div class="background"></div>
-
-    </header>
+            </li>
+        </ul>
+    </div>
+    <div class="background"></div>
+</header>
 
     <main>
         <div class="container_stats">
@@ -126,7 +125,9 @@
                         </select>
                     </div>
                     <button type="submit" name="generate" value="csv">Generate CSV</button>
-                    <button type="submit" name="generate" value="html">Generate HTML</button>
+                    <button type="submit" name="generate" value="html-pie-chart">Generate HTML Pie Chart</button>
+                    <button type="submit" name="generate" value="html-stacked-bar">Generate HTML Stacked Bar Chart</button>
+                    <button type="submit" name="generate" value="html-bar-chart">Generate HTML Bar Chart</button>
                 </form>
 
             </section>

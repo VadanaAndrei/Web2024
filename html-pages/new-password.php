@@ -34,7 +34,7 @@ if (isset($_GET['token'])) {
             <li>
                 <form class="search" action="SearchResults" method="get">
                     <span class="search__icon material-symbols-outlined">search</span>
-                    <input class="search__input" type="search" name="query" placeholder="Search">
+                    <input class="search__input" type="search" name="query" placeholder="Search by species">
                 </form>
             </li>
             <li>
@@ -72,7 +72,6 @@ if (isset($_GET['token'])) {
         </ul>
     </div>
     <div class="background"></div>
-
 </header>
 
     <main>

@@ -188,6 +188,13 @@ html {
   font-size: 13px;
 }
 
+.text-content p{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-word;
+}
+
 .photos {
   display: flex;
   justify-content: center;

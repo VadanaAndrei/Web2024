@@ -63,6 +63,10 @@ h1 {
 
 .latest-report-item p {
     font-family: 'Trebuchet MS', sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-word;
 }
 
 .latest-report-item .photos img {

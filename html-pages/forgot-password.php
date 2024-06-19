@@ -26,7 +26,7 @@
             <li>
                 <form class="search" action="SearchResults" method="get">
                     <span class="search__icon material-symbols-outlined">search</span>
-                    <input class="search__input" type="search" name="query" placeholder="Search">
+                    <input class="search__input" type="search" name="query" placeholder="Search by species">
                 </form>
             </li>
             <li>
@@ -64,21 +64,39 @@
         </ul>
     </div>
     <div class="background"></div>
-
 </header>
 
-    <main>
-        <div class="container-forgot-password">
-                <form action="ForgotPassword/sendPassword" method="post">
-                    <h2>Recover your password</h2><br><br>
-                    <div class="form-group">
-                        <label for="e-mail">E-mail:</label>
-                        <input type="email" id="e-mail" name="e-mail" required placeholder="Enter your e-mail...">
-                    </div>
-                    <button type="submit">Send Code</button>
-                </form>
+<main>
+    <div class="container-forgot-password">
+        <form id="forgot-password-form">
+            <h2>Recover your password</h2><br><br>
+            <div class="form-group">
+                <label for="e-mail">E-mail:</label>
+                <input type="email" id="e-mail" name="e-mail" required placeholder="Enter your e-mail...">
+            </div>
+            <button type="submit">Send Code</button>
+        </form>
+        <div class="success-message" id="success-message">
+            Email sent successfully
         </div>
-    </main>
+    </div>
+</main>
+<script>
+    document.getElementById('forgot-password-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+
+        fetch('ForgotPassword/sendPassword', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('success-message').style.display = 'block';
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
 
     <footer class="footer">
         <div class="container">

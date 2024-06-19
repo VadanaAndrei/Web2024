@@ -307,16 +307,16 @@ class Stats extends Controller {
 
             $htmlContent = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Species Statistic</title>";
             $htmlContent .= "<style>
-                    body { font-family: Arial, sans-serif; }
-                    .chart-container { display: flex; flex-direction: column; align-items: flex-start; }
-                    .bar { display: flex; align-items: center; margin-bottom: 10px; }
-                    .bar-label { width: 150px; padding-right: 10px; }
-                    .bar-stack { display: flex; width: 900px; }
-                    .bar-segment { height: 30px; }
-                    .legend { display: flex; margin-top: 20px; }
-                    .legend-item { display: flex; align-items: center; margin-right: 20px; }
-                    .legend-color { width: 20px; height: 20px; margin-right: 5px; }
-                    </style>";
+        body { font-family: Arial, sans-serif; }
+        .chart-container { display: flex; flex-direction: column; align-items: flex-start; width: 100%; }
+        .bar { display: flex; align-items: center; margin-bottom: 10px; width: 100%; }
+        .bar-label { flex-shrink: 0; width: 17%; padding-right: 10px; overflow: hidden; text-overflow: ellipsis; white-space: normal; word-break: break-word; }
+        .bar-stack { display: flex; width: 85%; }
+        .bar-segment { height: 30px; }
+        .legend { display: flex; margin-top: 20px; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; margin-right: 20px; }
+        .legend-color { width: 20px; height: 20px; margin-right: 5px; }
+        </style>";
             $htmlContent .= "</head><body>";
             $htmlContent .= "<h1>City Species Report</h1>";
             $htmlContent .= "<div class='chart-container'>";
