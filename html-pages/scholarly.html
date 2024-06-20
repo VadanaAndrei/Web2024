@@ -52,7 +52,9 @@
         <section id="intended-audience">
             <h3>Intended Audience</h3>
             <p>
-                The application is aimed at the average user who wants to help their society and community.
+                The application is aimed at the average user who wants to help their society and community. Also every
+                person who loves
+                animals and wants to help them will use this application with pleasure.
             </p>
         </section>
         <section id="scope">
@@ -68,17 +70,19 @@
 
         <section id="functions">
             <h3>Functions</h3>
-           
-                Below are the functionalities that the FePA application offers:
+
+            Below are the functionalities that the FePA application offers:
             <ul>
                 <li>Creation of an account and user registration</li>
                 <li>Changing the user's password</li>
                 <li>Reporting a stray animal or one that has escaped from a shelter</li>
-                <li>Viewing statistics that can be filtered by city, day, and animal, which can be exported in PDF or
-                    HTML format</li>
+                <li>Viewing statistics that can be filtered by city, day, and animal, which can be exported in CSV,PDF
+                    or multiple
+                    HTML formats</li>
                 <li>Viewing the most recent reports uploaded by other users</li>
+                <li>Subscribing to the RSS feed with the latest reports</li>
             </ul>
-        
+
         </section>
         <section id="operating-environment">
             <h3>Operating Environment</h3>
@@ -123,30 +127,82 @@
                 The site will prevent SQL Injection attacks. The user will not be allowed to enter special characters
                 such as ', with the verification being done at the server level. Thus, SQL code will not be able to run
                 in the database when a user is created or any other interaction where a new record is added/modified in
-                the database.
+                the database. In our application, the prevention of SQL injection is achieved with the help of prepared
+                statements and the bind_param() function. By using the substitution markers and the bind_param()
+                function, the data is separated from the SQL code. So any SQL injection attempt through the entered data
+                will not be possible because they will be treated as simple data, thus eliminating the risk of being
+                executed as SQL code.
             </p>
         </section>
     </section>
 
     <section id="system-features">
         <h2>Features</h2>
+
+        <section id="overview">
+            <h3>Overview</h3>
+            <p>
+                When someone access our application he will be able to see the Home page, but if he wants to use any
+                feature as reporting an animal or generating statistics he needs to be logged in, otherwise he will be
+                sent to the Login/Register page.
+                Using PHP we check if a user is authenticated via session variables and return a JSON response
+                indicating the authentication status and, if applicable, the type of the user.
+            </p>
+        </section>
+
         <section id="login">
             <h3>Authentication</h3>
             <p>
-                User authentication involves filling in the necessary fields (email and password) from the
+                User and admin authentication involve filling in the necessary fields (email and password) from the
                 login/register page. After filling in, he will press the login button and if the information filled in
-                is correct and the corresponding account exists, the user will be authenticated in the account.If the
-                user does not remember the password, he will be able to click on the 'Forgot password' button and he
+                is correct and the corresponding account exists, the user will be authenticated in the account. After
+                that the user id is set to the session
+                and the type of user (admin or user) is also set to the session. The session ID is sent through a
+                cookie.
+                <br>
+                If the user does not remember the password, he will be able to click on the 'Forgot password' button and
+                he
                 will be redirected to a new page where he will have to enter his email in order to receive a password
                 reset link.
+
+                <br> <br>
+                Admin authentication is done in the same way as user authentication, but the admin will have access to a
+                control panel where he can view all reports and users, delete them, if necessary.
             </p>
         </section>
+
+        <section id="forgot-password">
+            <h3>Forgot password</h3>
+            <p>
+                When a user click on the 'Forgot password' button, he will be redirected to a new page where he will
+                have to enter his email in order to receive a password reset link. A hashed token(which is valid for 30
+                minutes) will be generated and sent to the user email. The user will click on the link and if the token
+                is still valid he will be redirected to a new page where he will have to enter the new password and
+                confirm it. If the token is valid, the password will be updated in the database.
+            </p>
+        </section>
+
+        <section id="change-password">
+            <h3>Change password</h3>
+            <p>
+                The user can change his password from the Profile page. He will have to enter the old password, the new
+                password and confirm it. The password will be updated in the database if the old password is correct and
+                the new password is confirmed. Using JavaScript and PHP, the form is validated (we will verify if the
+                old password from the database matches the old password introduced by the user)
+                before submitting it.
+            </p>
+        </section>
+
         <section id="register">
             <h3>Registration</h3>
             <p>
                 Registration requires the creation of a new user account. The user enters the information in the
                 required fields (email, username, password, password confirmation) on the login/register page and if the
-                information he entered is valid, then the account is created by pressing the 'Register' button.
+                information he entered is valid, then the account is created by pressing the 'Register' button. Using
+                JavaScript, the registration form is validated, using preventDefault() prevents the default submission.
+                Then, with the validateInputs() function, each field is validated before sending the form. If everything
+                is ok, the fields will be marked in green and the form can be sent, otherwise a specific error message
+                will appear and the field will be outlined in red, and the form cannot be sent.
             </p>
         </section>
 
@@ -158,6 +214,16 @@
                 continue with the description of the area where the animal is active. In addition, it will be able to
                 include pictures. Each report will be included in the news feed from the Home page and can be filtered
                 from the Statistics page.
+
+                <br> <br>
+
+                The validation of the form is done using JavaScript, where we check if the fields are not empty and if
+                the images are in the correct format. If the form is not valid, the user will receive an error message
+                and the form will not be sent.
+                Using a PHP method in controller we will submit the form.This includes getting data from the form,
+                inserting the report into the database, managing tags and uploaded photos, and setting success or error
+                messages in the session. If all operations are successful, the user is redirected to the main page with
+                a success message.
             </p>
         </section>
 
@@ -165,8 +231,37 @@
             <h3>Generating statistics</h3>
             <p>
                 The user can filter the reports from the Statistics page, where he will have to select what he wants to
-                see according to the application filters (city, day, animal). The statistics will be generated in HTML
+                see according to the application filters (city, day, animal). The statistics will be generated in
+                HTML,CSV
                 and PDF format so that the user's visualization is as easy as possible.
+
+                <br> <br>
+
+                The data is taken for filtering and sql queries are built for the database. Then build the bodies (CSV,
+                HTML and PDF) for pdf use DOMpdf, a PHP library for generating pdfs from html. Each newly generated file
+                will be downloaded to the user's device.
+            </p>
+        </section>
+
+        <section id="rss-feed">
+            <h3>Subscribing to RSS feed</h3>
+            <p>
+                The user can subscribe to the RSS feed with the latest reports. The feed will be updated every time a
+                new
+                report is uploaded by a user.
+
+                <br> <br>
+                The script connects to the database, extracts the relevant data, and formats it into an RSS-compatible
+                XML document. Users can subscribe to this feed to see the latest reports directly with an RSS reader.
+            </p>
+        </section>
+
+        <section id="search-results">
+            <h3>Searching reports</h3>
+            <p>
+                The user can search for reports using the search bar from the Home page. The search is done by the
+                species , and the results will be displayed in a new page.
+                The search is done with a perfect match so the user will have to enter the exact name of the species.
             </p>
         </section>
 
@@ -200,6 +295,31 @@
             </p>
         </section>
 
+        <section id="software-interfaces">
+            <h3>Software interfaces</h3>
+            <p>
+                The database used is MySQL, which will store all the information about the users and reports. We chose
+                MySQL because it is a relational database management system that is easy to use and has a good
+                performance. The database will be accessed using the PHP Data Objects (PDO) extension, which provides a
+                data-access abstraction layer, which means that, regardless of which database is used, the same
+                functions will be used to query and fetch data.
+            </p>
+            <p>
+                The architectural design of the application is based on Model-View-Controller (MVC), which divides the
+                application into three main components: Model, View and Controller. The model represents the data and
+                business logic of the application, taking care of interactions with the database and validations. View
+                is responsible for presenting user data and the Controller acts as an intermediary between View and
+                Model.
+            </p>
+            <p>
+                The frontend of the application is built using HTML, CSS and JavaScript.
+            </p>
+            <p>
+                The backend is built using PHP and the database used is MySQL. The application will be hosted on a
+                server that supports PHP and MySQL, such as Apache.
+            </p>
+        </section>
+
     </section>
 
 
@@ -210,7 +330,8 @@
             <li>https://learn.shayhowe.com/html-css/building-forms/</li>
             <li>https://www.w3schools.com/html/html_responsive.asp</li>
             <li>https://www.geeksforgeeks.org/making-a-div-vertically-scrollable-using-css/</li>
-            <li>https://www.freecodecamp.org/news/html-button-link-code-examples-how-to-make-html-hyperlinks-using-the-href-attribute-on-tags/</li>
+            <li>https://www.freecodecamp.org/news/html-button-link-code-examples-how-to-make-html-hyperlinks-using-the-href-attribute-on-tags/
+            </li>
             <li>https://www.simplilearn.com/tutorials/css-tutorial/css-responsive-design</li>
         </ul>
     </section>
